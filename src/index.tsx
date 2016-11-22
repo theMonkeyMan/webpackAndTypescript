@@ -2,12 +2,10 @@ import * as React from "react";
 import * as ReactDOM from "react-dom"
 import { createStore } from "redux";
 const {Provider} = require("react-redux");
-require("./css/style.css");
 const str:string=require("!html!./second.html");
 import { HelloContains } from "./js/components/hello";
-
+require("./css/style.css");
 const {firstReduce} = require("./js/reducer/firstReducer.ts");
-
 console.info(str);
 interface AppIsRequireProps {
     store?:any
