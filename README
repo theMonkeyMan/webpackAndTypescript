@@ -1,0 +1,9 @@
+使用方法:
+
+1.执行npm install -g typescript webpack(若全局环境中已经存在可省略该步骤)
+
+2.在根目录中执行yarn install
+
+3.npm link typescript
+
+4.打开dist文件夹中的index.html即可查看效果
