@@ -6,4 +6,6 @@
 
 3.npm link typescript
 
-4.打开dist文件夹中的index.html即可查看效果
+4.执行webpack
+
+5.打开dist文件夹中的index.html即可查看效果
