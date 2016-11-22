@@ -6,6 +6,6 @@
 
 3.npm link typescript
 
-4.执行webpack
+4.执行yarn run webpack-product(目前使用webpack-dev会出现react压缩报错的问题,建议使用webpack-product)
 
 5.打开dist文件夹中的index.html即可查看效果

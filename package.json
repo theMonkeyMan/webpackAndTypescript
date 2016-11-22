@@ -27,7 +27,6 @@
   },
   "scripts": {
     "webpack-product": "export NODE_ENV=production && webpack",
-    //目前使用webpack-dev会出现react压缩报错的问题,建议使用webpack-product
     "webpack-dev":"export NODE_ENV=development && webpack"
   }
 }
