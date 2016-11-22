@@ -8,17 +8,13 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
     entry: {
-        index: './src/js/index.js'
+        index: './src/index.tsx'
     },
 
     output: {
         path: path.resolve(__dirname, './dist/static'),
         publishPath: 'static/',
         filename: '[name].[chunkhash].js'
-    },
-
-    resolve: {
-        extensions: ['', 'js', 'jsx', '.scss']
     },
 
     module: {
@@ -34,7 +30,19 @@ module.exports = {
             {
                 test: /\.html$/,
                 loader: ExtractTextPlugin.extract('html')
+            },
+            {
+                test: /\.tsx?$/,
+                loader: 'ts-loader'
+            },
+            {
+                test: /\.ts$/,
+                loader: 'awesome-typescript-loader'
             }
+        ],
+        preLoaders: [
+            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
+            { test: /\.js$/, loader: "source-map-loader" }
         ]
     },
 
@@ -52,5 +60,16 @@ module.exports = {
         }),
 
         new ExtractTextPlugin('[name].[chunkhash].css')
-    ]
+    ],
+
+    resolve: {
+        extensions: ['', '.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+    },
+
+    devtool: "source-map"
+
+    // externals: {
+    //     "react": "React",
+    //     "react-dom": "ReactDOM"
+    // },
 };

@@ -7,6 +7,8 @@
 
 <body>
     hello, world!
+    <div id="example"></div>
+    
 </body>
 
 </html>
