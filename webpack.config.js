@@ -71,9 +71,15 @@ module.exports = {
             template: './src/tpl/index',
             inject: true
         }),
-        
+
         //给css文件添加hash值,避免缓存
         new ExtractTextPlugin('[name].[chunkhash].css'),
+
+        new webpack.optimize.OccurrenceOrderPlugin(),
+
+        new webpack.DefinePlugin({
+            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+        }),
         //压缩webpack生成的文件,减少http流量压力
         new webpack.optimize.UglifyJsPlugin({
             compressor: {

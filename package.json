@@ -24,5 +24,10 @@
     "@types/node": "^6.0.49",
     "source-map-loader": "^0.1.5",
     "ts-loader": "^1.2.2"
+  },
+  "scripts": {
+    "webpack-product": "export NODE_ENV=production && webpack",
+    //目前使用webpack-dev会出现react压缩报错的问题,建议使用webpack-product
+    "webpack-dev":"export NODE_ENV=development && webpack"
   }
 }
