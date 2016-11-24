@@ -13,10 +13,12 @@
     "extract-text-webpack-plugin": "^1.0.1",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
+    "node-sass": "^3.13.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
     "react-redux": "^4.4.6",
     "redux": "^3.6.0",
+    "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
     "webpack": "^1.13.3"
   },
@@ -27,6 +29,6 @@
   },
   "scripts": {
     "webpack-product": "export NODE_ENV=production && webpack",
-    "webpack-dev":"export NODE_ENV=development && webpack"
+    "webpack-dev": "export NODE_ENV=development && webpack"
   }
 }
