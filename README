@@ -8,4 +8,7 @@
 
 4.执行yarn run webpack-product(目前使用webpack-dev会出现react压缩报错的问题,建议使用webpack-product)
 
+注意:执行webpack-product后会将当前版本的node环境变量NODE_ENV改成product模式,这可能会影响
+你在dev模式下的开发环境,如果遇到类似的情况,请执行export NODE_ENV=development.将环境改回dev模式.
+
 5.打开dist文件夹中的index.html即可查看效果
