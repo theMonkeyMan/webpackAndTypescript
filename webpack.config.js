@@ -13,6 +13,14 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 //定义公共路径
+//Note:
+//  1.if you want to resolve assets file on the local(this way is by the File Protocol),for example:
+//  define absolute path
+//  var publicPath=`${__dirname}/dist/static/`;
+//  2.if you want to resolve asset file on the server(this way is by the HTTP Protocol),for example:
+//  //define relative path
+//  var publicPath=`/dist/static/`;
+
 var publicPath=`/dist/static/`;
 
 module.exports = {
