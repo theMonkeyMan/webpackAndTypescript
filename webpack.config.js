@@ -13,7 +13,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 //定义公共路径
-var publicPath=`${__dirname}/dist/static/`;
+var publicPath=`/dist/static/`;
 
 module.exports = {
     //webpack入口文件配置
