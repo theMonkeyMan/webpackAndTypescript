@@ -12,6 +12,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 //清除文件插件
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
+//定义公共路径
+var publicPath=`${__dirname}/dist/static/`;
+
 module.exports = {
     //webpack入口文件配置
     entry: {
@@ -20,8 +23,11 @@ module.exports = {
 
     //webpack输出文件配置
     output: {
-        path: path.resolve(__dirname, './dist/static'),
-        publishPath: 'static/',
+        //指定输出路径
+        path: path.resolve(__dirname, './dist/static/'),
+        //公共模块输出路径
+        publicPath: publicPath,
+        //输入文件名称
         filename: '[name].[chunkhash].js'
     },
 
@@ -54,7 +60,16 @@ module.exports = {
             },
             {
                 test:/\.jpe?g$|.gif$|.png$/,
-                loader:'file-loader?name=[name]-[hash].[ext]&context=${rootDir}'
+                //使用file-loader模块整合图片资源模块.
+                //问号后面代表在file-loader处理匹配资源文件时,对该资源文件的一些装饰.
+                //[name]表示指定文件打包后的名称
+                //[ext]表示指定文件打包后的扩展名
+                //还有其他属性,如果需要了解自行到file-load官网去查看详细文档
+
+                //若没有显式规定文件的path,file-loader默认使用公共路径
+                //若没有在output字段中声明公共路径则会导致在代码中require('x/xxx/xx.png')
+                //返回的结果是一个绝对路径,导致你的内心boom.
+                loader:`file-loader?name=[name]-[hash].[ext]`
             }
 
         ],
