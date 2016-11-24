@@ -29,7 +29,11 @@ module.exports = {
     module: {
         loaders: [
             {
+                //test字段根据require到的文件扩展名做匹配
                 test: /\.css$/,
+                //loader字段是指定具体的模块加载器去编译匹配到的文本流内容
+                //ExtractTextPlugin是一个文件内容提取插件,以下使用该插件提取相应的
+                //module loader信息,然后赋值给loader字段.
                 loader: ExtractTextPlugin.extract('style', ['css'])
             },
             {
@@ -47,7 +51,12 @@ module.exports = {
             {
                 test: /\.ts$/,
                 loader: 'awesome-typescript-loader'
+            },
+            {
+                test:/\.jpe?g$|.gif$|.png$/,
+                loader:'file-loader?name=[name]-[hash].[ext]&context=${rootDir}'
             }
+
         ],
         preLoaders: [
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
