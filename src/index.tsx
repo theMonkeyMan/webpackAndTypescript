@@ -7,6 +7,8 @@ const {firstReduce} = require("./js/reducer/firstReducer.ts");
 
 require("./css/A.scss");
 
+const imgsrc=require("./image/img.png");
+
 interface AppIsRequireProps {
     store?:any
 }
@@ -17,7 +19,8 @@ class App extends React.Component<AppIsRequireProps, {}>{
     render(): any {
         return <Provider store={this.props.store}>
         <div>
-        <HelloContains say="Richard Chen"/>        
+        <HelloContains say="Richard Chen"/>
+        <img src={imgsrc}/>
         </div>
         </Provider>
     }
