@@ -1,26 +1,34 @@
 import * as React from "react";
+
 import * as ReactDOM from "react-dom"
-import { createStore } from "redux";
+
+import { createStore,applyMiddleware } from "redux";
+
+import {logger} from './js/middlewares';
+
+import {firstReduce} from './js/reducer/firstReducer';
+
+import {TextContainer,ButtonContainer,ThirdContainer} from "./js/containers";
+
 const {Provider} = require("react-redux");
-import { HelloContains } from "./js/components/hello";
-const {firstReduce} = require("./js/reducer/firstReducer.ts");
 
 require("./css/A.scss");
-
-const imgsrc=require("./image/img.png");
 
 interface AppIsRequireProps {
     store?:any
 }
 
-let store=createStore(firstReduce);
+let applyCreateStore=applyMiddleware(logger)(createStore);
+
+let store=applyCreateStore(firstReduce);
 
 class App extends React.Component<AppIsRequireProps, {}>{
     render(): any {
         return <Provider store={this.props.store}>
         <div>
-        <HelloContains say="Richard Chen"/>
-        <img src={imgsrc}/>
+        <TextContainer say="Richard Chen"/>
+        <ButtonContainer btnName="按钮" handler={()=>console.info('add')}/>
+        <ThirdContainer isRefresh={true}/>
         </div>
         </Provider>
     }
