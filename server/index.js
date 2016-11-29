@@ -17,3 +17,4 @@ koaServer.use(async (ctx)=>{
 });
 
 koaServer.listen(3000);
+console.info('server is launch,and listen port 3000.');
