@@ -21,7 +21,7 @@ var CleanWebpackPlugin = require('clean-webpack-plugin');
 //  //define relative path
 //  var publicPath=`/dist/static/`;
 
-var publicPath=`/dist/static/`;
+var publicPath = `/dist/static/`;
 
 module.exports = {
     //webpack入口文件配置
@@ -67,7 +67,7 @@ module.exports = {
                 loader: 'awesome-typescript-loader'
             },
             {
-                test:/\.jpe?g$|.gif$|.png$/,
+                test: /\.jpe?g$|.gif$|.png$/,
                 //使用file-loader模块整合图片资源模块.
                 //问号后面代表在file-loader处理匹配资源文件时,对该资源文件的一些装饰.
                 //[name]表示指定文件打包后的名称
@@ -77,13 +77,21 @@ module.exports = {
                 //若没有显式规定文件的path,file-loader默认使用公共路径
                 //若没有在output字段中声明公共路径则会导致在代码中require('x/xxx/xx.png')
                 //返回的结果是一个绝对路径,导致你的内心boom.
-                loader:`file-loader?name=[name]-[hash].[ext]`
+                loader: `file-loader?name=[name]-[hash].[ext]`
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: 'babel-loader',
+                query:{
+                    presets:[
+                        "babel-preset-es2015",
+                    ],
+                    cacheDirectory:true,
+                    plugins:["transform-async-to-generator"]
+                }
             }
 
-        ],
-        preLoaders: [
-            // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
-            { test: /\.js$/, loader: "source-map-loader" }
         ]
     },
 

@@ -1,0 +1,13 @@
+{
+  "name": "koaServer",
+  "version": "1.0.0",
+  "main": "app.js",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "start":"babel-node ./index.js"
+  }
+}
