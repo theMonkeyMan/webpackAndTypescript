@@ -16,6 +16,8 @@ client side:
 
 server side:
 
-1.yarn start
+1.npm install -g babel babel-cli
 
-2.访问服务器3000端口
+2.在server目录下执行 yarn start
+
+3.访问服务器3000端口
