@@ -22,6 +22,9 @@
     "immutable": "^3.8.1",
     "json-loader": "^0.5.4",
     "koa": "2",
+    "koa-body": "2",
+    "koa-bodyparser": "next",
+    "koa-router": "next",
     "node-sass": "^3.13.0",
     "react": "^15.4.0",
     "react-dom": "^15.4.0",
@@ -39,6 +42,7 @@
   },
   "scripts": {
     "webpack-product": "export NODE_ENV=production && webpack",
-    "webpack-dev": "export NODE_ENV=development && webpack"
+    "webpack-dev": "export NODE_ENV=development && webpack",
+    "run-server": "nodemon -x babel-node ./server/index.js"
   }
 }
