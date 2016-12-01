@@ -14,6 +14,8 @@ const {Provider} = require("react-redux");
 
 require("./css/A.scss");
 
+require("script!jquery");
+
 interface AppIsRequireProps {
     store?:any
 }

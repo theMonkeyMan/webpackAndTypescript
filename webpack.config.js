@@ -83,12 +83,12 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                query:{
-                    presets:[
+                query: {
+                    presets: [
                         "babel-preset-es2015",
                     ],
-                    cacheDirectory:true,
-                    plugins:["transform-async-to-generator"]
+                    cacheDirectory: true,
+                    plugins: ["transform-async-to-generator"]
                 }
             }
 
@@ -129,6 +129,10 @@ module.exports = {
     ],
 
     resolve: {
+        alias:{
+            jquery:path.join(__dirname,"./node_modules/jquery/dist/jquery.js")
+        },
+
         extensions: ['', '.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
