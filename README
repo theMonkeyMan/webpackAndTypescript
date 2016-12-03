@@ -18,6 +18,8 @@ server side:
 
 1.npm install -g babel babel-cli
 
-2.在server目录下执行 yarn start
+2.npm install nodemon -g(如果有nodemon模块该步骤可省略)
+
+2.在跟目录执行 yarn run run-server
 
 3.访问服务器3000端口
