@@ -7,10 +7,14 @@ var bodyParser = require('koa-bodyparser');
 
 import {filterRouter,router} from './routers';
 
+import {originChecker} from './routers';
+
 //创建koa实例
 var koaServer = new koa();
 
 koaServer
+    //校验合法域名
+    .use(originChecker)
     //转义post等请求的参数结构
     .use(bodyParser())
     //路由权限过滤

@@ -22,11 +22,13 @@ export async function filterRouter(ctx, next) {
     await next();
 }
 
-export async function originChecker(ctx) {
+//校验合法域名
+export async function originChecker(ctx,next) {
     //遍历合法域集合,过滤非法域
     for (var i = 0; i < validOriginArray.length; i++) {
         if (ctx.request.header.origin && ctx.request.header.origin.indexOf(validOriginArray[i]) >= 0) {
-            await ctx.set('Access-Control-Allow-Origin', ctx.request.header.origin);
+            await ctx.response.set('Access-Control-Allow-Origin', ctx.request.header.origin);
         }
     }
+    await next();
 }

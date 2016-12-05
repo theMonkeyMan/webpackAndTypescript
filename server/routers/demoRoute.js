@@ -40,13 +40,11 @@ router
     })
 
     .get('/first', async (ctx, next) => {
-        originChecker(ctx);
         ctx.body = userDatas[ctx.query.index];
     })
 
     .post('/second', async (ctx, next) => {
         var {index} = ctx.request.body;
-        originChecker(ctx);
         ctx.body = `${JSON.stringify(userDatas[index])}`;
     })
 
