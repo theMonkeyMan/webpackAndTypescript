@@ -5,9 +5,7 @@ var path = require('path');
 //http request body 解析中间件,主要处理请求参数在request body中的request method,例如post请求
 var bodyParser = require('koa-bodyparser');
 
-import {filterRouter,router} from './routers';
-
-import {originChecker} from './routers';
+import { filterRouter, router, originChecker, isStaticAssetsCache } from './routers';
 
 //创建koa实例
 var koaServer = new koa();
@@ -19,6 +17,8 @@ koaServer
     .use(bodyParser())
     //路由权限过滤
     .use(filterRouter)
+
+    .use(isStaticAssetsCache)
     /**
     * routes代表router对象配置的所有路径match规则集合,类型为Array,每一个请求都会遍历routes()集合里面的路由规则,
     * match到后执行相应的函数.for example:

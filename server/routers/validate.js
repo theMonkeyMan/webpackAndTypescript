@@ -14,10 +14,14 @@ export async function filterRouter(ctx, next) {
     }
     //给客户端发送资源
     if (ctx.path == '/') {
-        await koaSend(ctx, `/dist/index.html`);
+        await koaSend(ctx, `/dist/index.html`,{
+            maxAge:365*24*60*60
+        });
     }
     else {
-        await koaSend(ctx, ctx.path);
+        await koaSend(ctx, ctx.path,{
+            maxAge:365*24*60*60
+        });
     }
     await next();
 }
