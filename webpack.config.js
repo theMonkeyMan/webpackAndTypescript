@@ -142,7 +142,8 @@ module.exports = {
         alias: {
             jquery: path.join(__dirname, "./node_modules/jquery/dist/jquery.js"),
             //key:别名, value:引用路径
-            //设置别名后可直接在js文件中使用require('angular'),
+            //设置别名后可直接在js文件中使用require('angular'),将会引用./src/vendor目录下的angular.js文件
+            //若没有配置别名,require()方法则会去搜索node_modules中的模块,如果两者都不存在指定的模块,则会提示找不到指定模块的错误.
             angular:path.join(__dirname,"./src/vendor/angular")
         },
 
