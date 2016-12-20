@@ -11,7 +11,7 @@
 <body>
     hello, world!
     <div id="example"></div>
-    
+<script src="/dist/static/common.js"></script>
 </body>
 
 </html>

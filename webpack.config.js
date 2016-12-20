@@ -26,7 +26,10 @@ var publicPath = `/dist/static/`;
 module.exports = {
     //webpack入口文件配置
     entry: {
-        index: './src/index.tsx'
+        index: './src/index.tsx',
+        //配置common模块,优化页面加载,字段名可任意命名,可以使用resolve字段配置的模块别名,若resolve字段中没有配置相应的别名,
+        //则会去搜索node_modules中的配置,如果两者都不存在指定的模块,则会提示找不到指定模块的错误
+        vendor: ["angular"]
     },
 
     //webpack输出文件配置
@@ -94,11 +97,16 @@ module.exports = {
 
         ]
     },
-
     plugins: [
         //清空所有的dist文件夹下的文件夹以及文件
         new CleanWebpackPlugin(['dist/*'], {
 
+        }),
+        //使用公共模块插件将公共代码以及第三方代码和内部模块分割
+        new webpack.optimize.CommonsChunkPlugin({
+            name: 'vendor',//该值对应entry对象字面量中对应的key值
+            filename: 'common.js',//指定公共模块输出文件名称,若不配置该字段将以output字面量定义的规则为准
+            Infinity:false
         }),
 
         //webpack-html解决方案
@@ -128,9 +136,14 @@ module.exports = {
         })
     ],
 
+    //该字段主要用于配置引用路径
     resolve: {
-        alias:{
-            jquery:path.join(__dirname,"./node_modules/jquery/dist/jquery.js")
+        //设置引用别名
+        alias: {
+            jquery: path.join(__dirname, "./node_modules/jquery/dist/jquery.js"),
+            //key:别名, value:引用路径
+            //设置别名后可直接在js文件中使用require('angular'),
+            angular:path.join(__dirname,"./src/vendor/angular")
         },
 
         extensions: ['', '.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]

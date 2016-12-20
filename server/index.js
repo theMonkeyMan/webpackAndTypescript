@@ -33,6 +33,5 @@ koaServer
     .use(router.routes())
     //允许接收所有的请求方式,for example:get post put delete等.
     .use(router.allowedMethods())
-
 koaServer.listen(3000);
 console.info('server is launch,and listen port 3000.');

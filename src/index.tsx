@@ -16,6 +16,8 @@ require("./css/A.scss");
 
 require("script!jquery");
 
+console.info(require("angular"))
+
 interface AppIsRequireProps {
     store?:any
 }
