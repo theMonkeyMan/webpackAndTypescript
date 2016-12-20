@@ -106,7 +106,8 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',//该值对应entry对象字面量中对应的key值
             filename: 'common.js',//指定公共模块输出文件名称,若不配置该字段将以output字面量定义的规则为准
-            Infinity:false
+            Infinity:false,
+            children:false //是否给所有的模块添加公共代码模块,若children=true,则会在每一个chunk文件中添加公共代码块,默认为false
         }),
 
         //webpack-html解决方案
