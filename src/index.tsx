@@ -12,6 +12,7 @@ import {TextContainer,ButtonContainer,ThirdContainer} from "./js/containers";
 
 const {Provider} = require("react-redux");
 
+
 require("./css/A.scss");
 
 require("script!jquery");

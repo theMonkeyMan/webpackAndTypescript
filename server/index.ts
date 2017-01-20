@@ -1,4 +1,4 @@
-import koa from 'koa';
+import * as koa from 'koa';
 
 var path = require('path');
 

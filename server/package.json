@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "main": "app.js",
   "license": "MIT",
-  "dependencies": {
-  },
-  "devDependencies": {
-  },
+  "dependencies": {},
+  "devDependencies": {},
   "scripts": {
-    "start":"babel-node ./index.js"
+    "start": "babel-node ./index.js"
   }
 }

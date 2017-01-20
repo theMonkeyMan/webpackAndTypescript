@@ -16,6 +16,7 @@ class ButtonComponent extends React.Component<buttonPropInterface,{}>{
     }
 
     render(){
+        console.info(this.props)
         return (<button onClick={this.btnHandler.bind(this)}>{this.props.btnName}</button>)
     }
 }

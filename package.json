@@ -4,6 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
+    "@types/koa": "^2.0.37",
     "@types/react": "^0.14.50",
     "@types/react-dom": "^0.14.19",
     "awesome-typescript-loader": "^3.0.0-beta.3",
@@ -48,6 +49,6 @@
   "scripts": {
     "webpack-product": "export NODE_ENV=production && webpack",
     "webpack-dev": "export NODE_ENV=development && webpack",
-    "run-server": "nodemon -x babel-node ./server/index.js"
+    "run-server": "nodemon -x babel-node ./server/dist/server/index.js"
   }
 }

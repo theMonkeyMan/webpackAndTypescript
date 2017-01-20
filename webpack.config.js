@@ -113,7 +113,7 @@ module.exports = {
         //webpack-html解决方案
         new HtmlWebpackPlugin({
             //引入index chunk
-            chunks: ['index'],
+            chunks: ['index',"vendor"],
             //指定引入chunk文件的html文件
             filename: '../index.html',
             //html文件的模板格式文件
