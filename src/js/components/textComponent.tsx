@@ -9,7 +9,7 @@ class TextComponent extends React.Component<TextPropsInterface, {}> {
     }
     
     render() {
-        return <h1>the number:{this.props.state.get('number')}</h1>;
+        return <h1 className="font_size_20 font_color_pink">the number:{this.props.state.get('number')}</h1>;
     }
 }
 

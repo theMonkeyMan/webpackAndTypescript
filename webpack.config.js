@@ -58,6 +58,14 @@ module.exports = {
                 loader: ExtractTextPlugin.extract('style', ['css', 'sass'])
             },
             {
+                test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "url-loader?limit=10000&mimetype=application/font-woff"
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: "file-loader"
+            },
+            {
                 test: /\.html$/,
                 loader: ExtractTextPlugin.extract('html')
             },
@@ -106,14 +114,14 @@ module.exports = {
         new webpack.optimize.CommonsChunkPlugin({
             name: 'vendor',//该值对应entry对象字面量中对应的key值
             filename: 'common.js',//指定公共模块输出文件名称,若不配置该字段将以output字面量定义的规则为准
-            Infinity:false,
-            children:false //是否给所有的模块添加公共代码模块,若children=true,则会在每一个chunk文件中添加公共代码块,默认为false
+            Infinity: false,
+            children: false //是否给所有的模块添加公共代码模块,若children=true,则会在每一个chunk文件中添加公共代码块,默认为false
         }),
 
         //webpack-html解决方案
         new HtmlWebpackPlugin({
             //引入index chunk
-            chunks: ['index',"vendor"],
+            chunks: ['index', "vendor"],
             //指定引入chunk文件的html文件
             filename: '../index.html',
             //html文件的模板格式文件
@@ -145,7 +153,7 @@ module.exports = {
             //key:别名, value:引用路径
             //设置别名后可直接在js文件中使用require('angular'),将会引用./src/vendor目录下的angular.js文件
             //若没有配置别名,require()方法则会去搜索node_modules中的模块,如果两者都不存在指定的模块,则会提示找不到指定模块的错误.
-            angular:path.join(__dirname,"./src/vendor/angular")
+            angular: path.join(__dirname, "./src/vendor/angular")
         },
 
         extensions: ['', '.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]

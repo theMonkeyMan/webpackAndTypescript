@@ -2,43 +2,38 @@ import * as React from "react";
 
 import * as ReactDOM from "react-dom"
 
-import { createStore,applyMiddleware } from "redux";
+import { createStore, applyMiddleware } from "redux";
 
-import {logger} from './js/middlewares';
+import { logger } from './js/middlewares';
 
-import {firstReduce} from './js/reducer/firstReducer';
+import { firstReduce } from './js/reducer/firstReducer';
 
-import {TextContainer,ButtonContainer,ThirdContainer} from "./js/containers";
+import { TextContainer, ButtonContainer, ThirdContainer } from "./js/containers";
+
+import { HomeRouter } from './js/routers';
 
 const {Provider} = require("react-redux");
 
+require("../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss");
 
-require("./css/A.scss");
-
-require("script!jquery");
-
-console.info(require("angular"))
+require("./css/styles.scss");
 
 interface AppIsRequireProps {
-    store?:any
+    store?: any
 }
 
-let applyCreateStore=applyMiddleware(logger)(createStore);
+let applyCreateStore = applyMiddleware(logger)(createStore);
 
-let store=applyCreateStore(firstReduce);
+let store = applyCreateStore(firstReduce);
 
 class App extends React.Component<AppIsRequireProps, {}>{
     render(): any {
         return <Provider store={this.props.store}>
-        <div>
-        <TextContainer say="Richard Chen"/>
-        <ButtonContainer btnName="按钮" handler={()=>console.info('add')}/>
-        <ThirdContainer isRefresh={true}/>
-        </div>
+            <HomeRouter />
         </Provider>
     }
 }
 ReactDOM.render(
-    <App store={store}/>,
+    <App store={store} />,
     document.getElementById("example")
 );

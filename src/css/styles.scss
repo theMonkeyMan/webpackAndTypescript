@@ -1,0 +1,69 @@
+$px_size_12:12px;
+
+$px_size_14:14px;
+
+$px_size_16:16px;
+
+$px_size_18:18px;
+
+$px_size_20:20px;
+
+$px_size_100:100px;
+
+$px_size_150:150px;
+
+$px_size_200:200px;
+
+$color_red:rgba(255,0,0,1);
+
+$color_yellow:rgba(255,255,0,1);
+
+$color_pink:rgba(255,192,203,1);
+
+html {
+  margin:0;
+}
+
+.font_size_12{
+  font-size:$px_size_12
+}
+
+.font_size_14{
+  font-size:$px_size_14
+}
+
+.font_size_16{
+  font-size:$px_size_16
+}
+
+.font_size_18{
+  font-size:$px_size_18
+}
+
+.font_size_20{
+  font-size:$px_size_20
+}
+
+.font_color_red{
+  color:$color_red;
+}
+
+.font_color_yellow{
+  color:$color_yellow;
+}
+
+.font_color_pink{
+  color:$color_pink;
+}
+
+.width_100{
+  width:$px_size_100
+}
+
+.width_150{
+  width:$px_size_150
+}
+
+.width_200{
+  width:$px_size_200
+}

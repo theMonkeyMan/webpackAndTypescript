@@ -1,23 +1,26 @@
 import * as React from "react";
 
-interface buttonPropInterface{
-    handler:Function,
-    btnName:string
+import { Button } from 'react-bootstrap';
+
+interface buttonPropInterface {
+    handler: Function;
+    btnName: string;
+    bsStyle: string;
 }
 
-class ButtonComponent extends React.Component<buttonPropInterface,{}>{
+class ButtonComponent extends React.Component<buttonPropInterface, {}>{
 
-    constructor(){
+    constructor() {
         super();
     }
 
-    btnHandler(){
+    btnHandler() {
         this.props.handler();
     }
 
-    render(){
-        console.info(this.props)
-        return (<button onClick={this.btnHandler.bind(this)}>{this.props.btnName}</button>)
+    render() {
+        console.info(this.props);
+        return (<Button {...this.props} onClick={this.btnHandler.bind(this)}>{this.props.btnName}</Button>)
     }
 }
 
