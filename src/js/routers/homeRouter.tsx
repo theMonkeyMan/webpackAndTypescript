@@ -1,11 +1,12 @@
 import * as React from 'react';
 
-import { Navigator,TextComponent } from '../components';
+import { Navigator, TextComponent } from '../components';
 
 import { TextContainer } from '../containers';
 
 const { Router, Route, IndexRoute, Link, IndexLink, browserHistory } = require('react-router');
 
+import { rootPath } from '../common';
 
 export default class HomeRouter extends React.Component<{}, {}>{
 
@@ -16,8 +17,15 @@ export default class HomeRouter extends React.Component<{}, {}>{
     render() {
         return (
             <Router history={browserHistory}>
-                <Route path="/" component={Navigator} />
-                <Route path="/about" component={TextComponent} />
+                <Route path={rootPath} component={Navigator}>
+
+                    <Route path={`about`}>
+                        <Route path={`companyCulture`} component={TextContainer} />
+
+                    </Route>
+                </Route>
+
+
             </Router>
         )
     }

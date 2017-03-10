@@ -1,0 +1,56 @@
+.div_height{
+    height:2.6rem;
+}
+
+//一级导航菜单ul
+.nav_ul{
+    height:2.6rem;
+    margin:0 0 0 0.2rem;
+}
+
+//二级导航菜单ul
+.sub_nav_ul{
+    top:2.5rem;
+}
+
+//一级导航菜单li
+.nav_li{
+    border-color:rgba(1,2,3,0.1);
+    border-width:0.1px;
+    border-style:solid;
+    border-radius:0.2rem;
+    height: 2.5rem;
+    line-height:2.5rem;
+}
+
+//一级导航菜单li鼠标悬停
+.nav_li:hover{
+    background-color:rgba(187,255,255,0.7);
+    cursor:pointer;
+    transition:background-color 1s;
+}
+
+//二级导航菜单li鼠标悬停
+.sub_nav_li:hover{
+    background-color:rgba(187,255,255,0.7);
+    cursor:pointer;
+    transition:background-color 1s;
+}
+
+//二级导航菜单默认折叠
+.nav_li .sub_nav_li{
+    height:0rem;
+    opacity: 0;
+}
+
+//鼠标悬停一级导航菜单时,展开二级导航菜单
+.nav_li:hover .sub_nav_li{
+    border-color:rgba(1,2,3,0.1);
+    border-width:0.1px;
+    border-style:solid;
+    border-radius:0.2rem;
+    height: 2.5rem;
+    line-height:2.5rem;
+    opacity:1;
+    transition:height 1s,opacity 2s;
+}

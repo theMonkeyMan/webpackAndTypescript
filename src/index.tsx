@@ -14,7 +14,7 @@ import { HomeRouter } from './js/routers';
 
 const {Provider} = require("react-redux");
 
-require("../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss");
+// require("../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss");
 
 require("./css/styles.scss");
 

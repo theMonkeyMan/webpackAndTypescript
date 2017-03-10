@@ -46,10 +46,18 @@ function filterRouter(ctx, next) {
             switch (_a.label) {
                 case 0:
                     //请求路径中不包含api字符串(代表后台接口请求路径前缀)或dist字符串(代表静态资源请求路径前缀)时,返回请求被禁止
-                    if (ctx.path != '/' && !ctx.path.includes('api') && !ctx.path.includes('dist')) {
-                        return [2 /*return*/, ctx.body = 'Forbidden'];
+                    // if (ctx.path != '/' && !ctx.path.includes('api') && !ctx.path.includes('dist')) {
+                    //     return ctx.body = 'Forbidden';
+                    // }
+                    console.info(ctx.path);
+                    // //给客户端发送资源
+                    if (ctx.path == '/') {
+                        // await koaSend(ctx, `/dist/index.html`,{
+                        //     maxAge:365*24*60*60
+                        // });
+                        ctx.response.redirect("/dist/index.html");
                     }
-                    if (!(ctx.path == '/')) return [3 /*break*/, 2];
+                    if (!ctx.path.includes('index.html')) return [3 /*break*/, 2];
                     return [4 /*yield*/, koaSend(ctx, "/dist/index.html", {
                             maxAge: 365 * 24 * 60 * 60
                         })];
@@ -62,8 +70,11 @@ function filterRouter(ctx, next) {
                 case 3:
                     _a.sent();
                     _a.label = 4;
-                case 4: return [4 /*yield*/, next()];
+                case 4: 
+                // }
+                return [4 /*yield*/, next()];
                 case 5:
+                    // }
                     _a.sent();
                     return [2 /*return*/];
             }
