@@ -1,25 +1,27 @@
 使用方法:
-
-在根目录中执行yarn install
+提示:可以使用npm也可以使用yarn(下文中使用的是npm).
+在根目录中执行npm install
 
 client side:
 1.执行npm install -g typescript webpack(若全局环境中已经存在可省略该步骤)
 
 2.npm link typescript
 
-3.执行yarn run webpack-product(目前使用webpack-dev会出现react压缩报错的问题,建议使用webpack-product)
+3.执行npm run webpack-product(目前使用webpack-dev会出现react压缩报错的问题,建议使用webpack-product)
 
 注意:执行webpack-product后会将当前版本的node环境变量NODE_ENV改成product模式,这可能会影响
 你在dev模式下的开发环境,如果遇到类似的情况,请执行export NODE_ENV=development.将环境改回dev模式.
 
 4.打开dist文件夹中的index.html即可查看效果
 
+database side:
+1.执行npm run initDB(package.json里面配置的initDB命令默认账号为root,密码为空.若使用执行环境中的其他mysql账号密码).
 server side:
 
 1.npm install -g babel babel-cli
 
 2.npm install nodemon -g(如果有nodemon模块该步骤可省略)
 
-2.在跟目录执行 yarn run run-server
+2.在跟目录执行 npm run run-server
 
 3.访问服务器3000端口
