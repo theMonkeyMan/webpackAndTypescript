@@ -56,6 +56,7 @@
   "scripts": {
     "webpack-product": "export NODE_ENV=production && webpack --progress --watch --colors",
     "webpack-dev": "export NODE_ENV=development && webpack",
-    "run-server": "nodemon -x babel-node ./server/dist/server/index.js"
+    "run-server": "nodemon -x babel-node ./server/dist/server/index.js",
+    "initDB":"mysql -u root -p -e 'source ./scripts/initDB.sql'"
   }
 }
