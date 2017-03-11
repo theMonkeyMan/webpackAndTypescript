@@ -38,6 +38,7 @@ var _this = this;
 //处理http请求路由的中间件(get,post,put,delete)
 var koaRouter = require('koa-router');
 var model_1 = require("../model");
+var dao_1 = require("../dao");
 //创建koa-router实例
 var router = koaRouter({
     //路由前缀,目的是用来做path过滤,没有api前缀的path不会被match
@@ -81,6 +82,42 @@ router
         index = ctx.request.body.index;
         ctx.body = "" + JSON.stringify(model_1.userDatas[index]);
         return [2 /*return*/];
+    });
+}); })
+    .get('/getUserInfo', function (ctx, next) { return __awaiter(_this, void 0, void 0, function () {
+    var userInfoPromise;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                userInfoPromise = dao_1.default.queryAll();
+                return [4 /*yield*/, userInfoPromise.then(function (res) {
+                        ctx.body = { data: res, msg: "success" };
+                    })
+                        .catch(function (error) {
+                        ctx.body = { msg: error };
+                    })];
+            case 1:
+                _a.sent();
+                return [2 /*return*/];
+        }
+    });
+}); })
+    .post('/addUserInfo', function (ctx, next) { return __awaiter(_this, void 0, void 0, function () {
+    var userInfoPromise;
+    return __generator(this, function (_a) {
+        switch (_a.label) {
+            case 0:
+                userInfoPromise = dao_1.default.add(ctx.request);
+                return [4 /*yield*/, userInfoPromise.then(function (res) {
+                        ctx.body = { msg: "添加成功" };
+                    })
+                        .catch(function (error) {
+                        ctx.body = { msg: error };
+                    })];
+            case 1:
+                _a.sent();
+                return [2 /*return*/];
+        }
     });
 }); });
 Object.defineProperty(exports, "__esModule", { value: true });

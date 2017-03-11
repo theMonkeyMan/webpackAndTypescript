@@ -1,17 +1,17 @@
 import * as React from "react";
 
-import { Button } from 'react-bootstrap';
+import '../../css/button.scss';
 
 interface buttonPropInterface {
     handler: Function;
     btnName: string;
-    bsStyle: string;
 }
 
 class ButtonComponent extends React.Component<buttonPropInterface, {}>{
 
     constructor() {
         super();
+        this.btnHandler = this.btnHandler.bind(this);
     }
 
     btnHandler() {
@@ -19,8 +19,7 @@ class ButtonComponent extends React.Component<buttonPropInterface, {}>{
     }
 
     render() {
-        console.info(this.props);
-        return (<Button {...this.props} onClick={this.btnHandler.bind(this)}>{this.props.btnName}</Button>)
+        return (<button className={'btn'} {...this.props} onClick={this.btnHandler}>{this.props.btnName}</button>)
     }
 }
 

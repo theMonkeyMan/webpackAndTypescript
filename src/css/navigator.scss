@@ -1,3 +1,12 @@
+.bg_img{
+    background: url(../image/bg_img.jpg) no-repeat;
+    background-size: 100%;
+    background-size: 100% 100%;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+}
+
 .div_height{
     height:2.6rem;
 }
@@ -21,6 +30,7 @@
     border-radius:0.2rem;
     height: 2.5rem;
     line-height:2.5rem;
+    background-color:rgba(255,255,255,1);
 }
 
 //一级导航菜单li鼠标悬停
@@ -43,12 +53,17 @@
     opacity: 0;
 }
 
-//鼠标悬停一级导航菜单时,展开二级导航菜单
-.nav_li:hover .sub_nav_li{
+//二级导航菜单li
+.sub_nav_li{
     border-color:rgba(1,2,3,0.1);
     border-width:0.1px;
     border-style:solid;
     border-radius:0.2rem;
+    background-color:rgba(255,255,255,1);
+}
+
+//鼠标悬停一级导航菜单时,展开二级导航菜单
+.nav_li:hover .sub_nav_li{
     height: 2.5rem;
     line-height:2.5rem;
     opacity:1;

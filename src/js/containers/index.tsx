@@ -1,13 +1,13 @@
-import TextContainer from './textContainer';
+import HomeDayliManagerContainer from './homeDayliManagerContainer';
 
-import ButtonContainer from './buttonContainer';
+import NavigatorContainer from './navigatorContainer';
 
-import ThirdContainer from './thirdContainer';
+import HomeRouterContainer from './homeRouterContainer';
 
 export {
-    TextContainer,
-    ButtonContainer,
-    ThirdContainer
+    HomeDayliManagerContainer,
+    NavigatorContainer,
+    HomeRouterContainer,
 }
 
 /*

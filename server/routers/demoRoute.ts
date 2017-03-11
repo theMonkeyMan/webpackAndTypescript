@@ -5,6 +5,8 @@ import {originChecker} from './validate';
 
 import {userDatas} from '../model';
 
+import userDao from '../dao';
+
 
 //创建koa-router实例
 const router = koaRouter({
@@ -46,6 +48,27 @@ router
     .post('/second', async (ctx, next) => {
         var {index} = ctx.request.body;
         ctx.body = `${JSON.stringify(userDatas[index])}`;
+    })
+
+    .get('/getUserInfo',async(ctx,next)=>{
+        var userInfoPromise=userDao.queryAll();
+
+        await userInfoPromise.then(res=>{
+            ctx.body={data:res,msg:"success"};
+        })
+        .catch(error=>{
+            ctx.body={msg:error}
+        });
+    })
+
+    .post('/addUserInfo',async(ctx,next)=>{
+        var userInfoPromise=userDao.add(ctx.request);
+        await userInfoPromise.then(res=>{
+            ctx.body={msg:"添加成功"};
+        })
+        .catch(error=>{
+            ctx.body={msg:error};
+        });
     })
 
 export default router;

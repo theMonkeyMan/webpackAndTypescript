@@ -61,6 +61,7 @@ ul,li{
 
 a{
   text-decoration: none;
+  color:#3D9970;
 }
 
 .font_size_12{
@@ -242,4 +243,8 @@ a{
 
 .position_absolute{
   position:absolute;
+}
+
+.margin_top_12{
+  margin-top:$px_size_12;
 }

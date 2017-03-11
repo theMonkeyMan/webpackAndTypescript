@@ -1,15 +1,24 @@
 import * as React from "react";
 
-interface TextPropsInterface { say:string,state?:any }
+interface TextPropsInterface {
+    state?:any;
+    text:string;
+ }
 
-class TextComponent extends React.Component<TextPropsInterface, {}> {
+ interface TextStateInterface {
+     state?:any;
+     text?:string;
+ }
 
-    constructor(){
-        super();
+
+class TextComponent extends React.Component<TextPropsInterface, TextStateInterface> {
+
+    constructor(props){
+        super(props);
     }
     
     render() {
-        return <h1 className="font_size_20 font_color_pink">the number:{this.props.state.get('number')}</h1>;
+        return <h1 className="font_size_20 font_color_pink">{this.props.text}</h1>;
     }
 }
 

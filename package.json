@@ -7,6 +7,7 @@
     "@types/koa": "^2.0.37",
     "@types/react": "^0.14.50",
     "@types/react-dom": "^0.14.19",
+    "@types/whatwg-fetch": "^0.0.33",
     "awesome-typescript-loader": "^3.0.0-beta.3",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
@@ -31,7 +32,9 @@
     "koa-router": "next",
     "koa-send": "^3.2.0",
     "koa-static": "next",
+    "mysql": "^2.13.0",
     "node-sass": "^3.13.0",
+    "qs": "^6.4.0",
     "react": "^15.4.0",
     "react-bootstrap": "^0.30.7",
     "react-dom": "^15.4.0",
@@ -42,7 +45,8 @@
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.3"
+    "webpack": "^1.13.3",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "@types/node": "^6.0.49",

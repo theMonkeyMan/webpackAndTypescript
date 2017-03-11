@@ -8,9 +8,7 @@ import { logger } from './js/middlewares';
 
 import { firstReduce } from './js/reducer/firstReducer';
 
-import { TextContainer, ButtonContainer, ThirdContainer } from "./js/containers";
-
-import { HomeRouter } from './js/routers';
+import { HomeRouterContainer } from "./js/containers";
 
 const {Provider} = require("react-redux");
 
@@ -29,7 +27,7 @@ let store = applyCreateStore(firstReduce);
 class App extends React.Component<AppIsRequireProps, {}>{
     render(): any {
         return <Provider store={this.props.store}>
-            <HomeRouter />
+            <HomeRouterContainer />
         </Provider>
     }
 }

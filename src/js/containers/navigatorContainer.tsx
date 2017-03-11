@@ -1,10 +1,8 @@
-const {connect} =require('react-redux');
-
-import {ButtonComponent} from '../components';
+import {Navigator} from '../components';
 
 import {mapStateToPropsInterface,mapDispatchToPropsInterface} from './containerInterface';
 
-import {addAction} from '../action/addAction';
+const {connect} =require('react-redux');
 
 const mapStateToProps:mapStateToPropsInterface=(state:any,ownProps:any)=>{
     return {
@@ -13,12 +11,11 @@ const mapStateToProps:mapStateToPropsInterface=(state:any,ownProps:any)=>{
 }
 
 const mapDispatchToProps:mapDispatchToPropsInterface=(dispatch:any,ownProps:any)=>{
-
     return {
-        handler:()=>dispatch(addAction),
+        
     }
 }
 
-const ButtonContainer=connect(mapStateToProps,mapDispatchToProps)(ButtonComponent);
+const NavigatorContainer=connect(mapStateToProps,mapDispatchToProps)(Navigator);
 
-export default ButtonContainer;
+export default NavigatorContainer;
