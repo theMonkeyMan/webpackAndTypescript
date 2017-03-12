@@ -16,9 +16,13 @@ class TextComponent extends React.Component<TextPropsInterface, TextStateInterfa
     constructor(props){
         super(props);
     }
+
+    componentDidMount(){
+        
+    }
     
     render() {
-        return <h1 className="font_size_20 font_color_pink">{this.props.text}</h1>;
+        return <h1 className="font_size_20 ">{this.props.text}</h1>;
     }
 }
 

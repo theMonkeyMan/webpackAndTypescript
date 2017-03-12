@@ -14,18 +14,19 @@ import '../../css/homeDayliManager.scss';
 
 const mapStateToProps: mapStateToPropsInterface = (state: any, ownProps: any) => {
     return {
-        state
+        state,
     }
 }
 
 const mapDispatchToProps: mapDispatchToPropsInterface = (dispatch: any, ownProps: any) => {
     return {
-        handler: () => { dispatch(addAction) }
+        dispatch,
     }
 }
 
 interface HomeDayliManagerPropsInterface {
     state?: any;
+    dispatch?: Function;
 }
 
 interface HomeDayliManagerStateInterface {
@@ -55,34 +56,21 @@ class HomeDayliManager extends React.Component<HomeDayliManagerPropsInterface, H
 
     }
 
-    componentDidMount() {
-        // requestList.getUserInfo({}).then(res=>{
-        //     console.info(res);
-        // })
-        // .catch(error=>{
-        //     console.info(error);
-        // })
+    async getUserInfo() {
+        this.props.dispatch({ type: "FETCH_PENDDING" });
+        await requestList.getUserInfo({}).then(res => {
+            this.props.dispatch({ type: "FETCH_RECEIVE", payload: res });
+        })
+            .catch(error => {
+                console.info(error);
+            });
     }
 
-    async componentWillUpdate() {
-        //    await requestList.getUserInfo({}).then(res=>{
-        //         console.info(res);
-        //         this.userInfo=JSON.stringify(res);
-        //     })
-        //     .catch(error=>{
-        //         console.info(error);
-        //     });
+    async componentDidMount() {
+        this.getUserInfo();
+    }
 
-        //     requestList.addUserInfo({
-        //         name:"heihei",
-        //         age:23,
-        //         sex:"man"
-        //     }).then(res=>{
-        //         console.info(res);
-        //     })
-        //     .catch(error=>{
-        //         console.info(error);
-        //     });
+    componentWillUpdate() {
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -99,7 +87,7 @@ class HomeDayliManager extends React.Component<HomeDayliManagerPropsInterface, H
             sex: user_sex
         }).then(res => {
             console.info(res);
-            alert(res["msg"]);
+            this.getUserInfo();
         })
             .catch(error => {
                 console.info(error);
@@ -109,7 +97,7 @@ class HomeDayliManager extends React.Component<HomeDayliManagerPropsInterface, H
 
 
     render() {
-        return ( 
+        return (
             <div className={'content'}>
                 <li className={'margin_top_12'}>
                     <span className={'float_left'}>姓名:</span>
@@ -127,7 +115,7 @@ class HomeDayliManager extends React.Component<HomeDayliManagerPropsInterface, H
                     <span><ButtonComponent btnName="按钮" handler={this.submitBtnClick} /></span>
                 </li>
 
-                {/*<TextComponent text={this.userInfo} />*/}
+                <TextComponent text={JSON.stringify(this.props.state.homeDayliManagerReducer.get("userInfoList"))} />
             </div>
 
         );

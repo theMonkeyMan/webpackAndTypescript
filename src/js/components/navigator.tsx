@@ -23,7 +23,7 @@ export default class Navigator extends React.Component<NavigatorPropsInterface, 
         super(props);
 
         this.state = {
-            rootPath: this.props.state.get("rootPath"),
+            rootPath: rootPath,
         };
 
         this.NavItemArray = [

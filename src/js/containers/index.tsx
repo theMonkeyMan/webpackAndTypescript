@@ -4,6 +4,10 @@ import NavigatorContainer from './navigatorContainer';
 
 import HomeRouterContainer from './homeRouterContainer';
 
+
+/*
+ * 每个路由(页面)对应一个Container 
+ */
 export {
     HomeDayliManagerContainer,
     NavigatorContainer,

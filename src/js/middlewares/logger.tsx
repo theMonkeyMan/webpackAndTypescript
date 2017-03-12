@@ -9,9 +9,9 @@ interface dispatchAndGetStateInterface{
 
 const logger:loggerInterface=(obj:dispatchAndGetStateInterface)=>{
     return (middleDispatch)=>(transmitAction)=>{
-        for(var i of obj.getState()._root.entries){
-            console.info(i)
-        }
+        // for(var i of obj.getState()._root.entries){
+        //     console.info(i)
+        // }
         middleDispatch(transmitAction);
     }
 };

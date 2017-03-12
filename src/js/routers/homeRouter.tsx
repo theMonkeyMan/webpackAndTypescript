@@ -22,7 +22,7 @@ export default class HomeRouter extends React.Component<homeRouterPropsInterface
     constructor(props) {
         super(props);
         this.state={
-            rootPath:this.props.state.get("rootPath"),
+            rootPath:rootPath,
         };
     }
 

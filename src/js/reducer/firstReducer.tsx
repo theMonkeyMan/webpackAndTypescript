@@ -1,13 +1,6 @@
 import { addAction } from '../action/addAction';
 
-import {rootPath} from '../common';
-
-import Immutable = require('immutable');
-
-let initialState:Immutable.Map<String,any>=Immutable.Map({
-  number:0,
-  rootPath,
-});
+import initialState from './initialState';
 
 export function firstReduce(state:any = initialState, action:any): any {
   switch (action.type) {
