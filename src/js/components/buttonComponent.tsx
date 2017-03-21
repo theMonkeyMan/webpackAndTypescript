@@ -19,7 +19,7 @@ class ButtonComponent extends React.Component<buttonPropInterface, {}>{
     }
 
     render() {
-        return (<button className={'btn'} {...this.props} onClick={this.btnHandler}>{this.props.btnName}</button>)
+        return (<button className={'btn'} onClick={this.btnHandler}>{this.props.btnName}</button>)
     }
 }
 

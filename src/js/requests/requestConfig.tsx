@@ -2,8 +2,6 @@
 
 import * as qs from "qs";
 
-import "whatwg-fetch";
-
 function status(response) {
     if (response.status >= 200 && response.status < 300) {
         return Promise.resolve(response)
