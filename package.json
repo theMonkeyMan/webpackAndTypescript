@@ -40,6 +40,7 @@
     "react-redux": "^4.4.6",
     "react-router": "^3.0.2",
     "redux": "^3.6.0",
+    "redux-saga": "^0.14.6",
     "sass-loader": "^4.0.2",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
@@ -52,9 +53,9 @@
     "ts-loader": "^1.2.2"
   },
   "scripts": {
-    "webpack-product": "export NODE_ENV=production && webpack --progress --watch --colors",
-    "webpack-dev": "export NODE_ENV=development && webpack",
+    "webpack-product": "webpack --progress --watch --colors",
+    "webpack-dev": "webpack",
     "run-server": "nodemon -x babel-node ./server/dist/server/index.js",
-    "initDB":"mysql -u root -p -e 'source ./scripts/initDB.sql'"
+    "initDB": "mysql -u root -p -e 'source ./scripts/initDB.sql'"
   }
 }

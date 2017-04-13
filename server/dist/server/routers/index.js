@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var validate_1 = require("./validate");
 exports.filterRouter = validate_1.filterRouter;
 exports.originChecker = validate_1.originChecker;

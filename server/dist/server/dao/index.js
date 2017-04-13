@@ -1,6 +1,7 @@
 // dao/userDao.js
 // 实现与MySQL交互
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // import mysql from 'mysql';
 var mysql = require('mysql');
 var config_1 = require("./config");
@@ -61,5 +62,4 @@ var userDao = {
         return thePromise;
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = userDao;

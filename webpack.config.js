@@ -12,6 +12,9 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 //清除文件插件
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
+//引入node环境
+var env=require("./webpack.prod").env;
+
 //定义公共路径
 //Note:
 //  1.if you want to resolve assets file on the local(this way is by the File Protocol),for example:
@@ -107,7 +110,7 @@ module.exports = {
     },
     plugins: [
         //清空所有的dist文件夹下的文件夹以及文件
-        new CleanWebpackPlugin(['dist/*'], {
+        new CleanWebpackPlugin(['dist/static/'], {
 
         }),
         //使用公共模块插件将公共代码以及第三方代码和内部模块分割
@@ -135,7 +138,7 @@ module.exports = {
         new webpack.optimize.OccurrenceOrderPlugin(),
 
         new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')
+            'process.env.NODE_ENV': JSON.stringify(env)
         }),
         //压缩webpack生成的文件,减少http流量压力
         new webpack.optimize.UglifyJsPlugin({
@@ -159,11 +162,18 @@ module.exports = {
         extensions: ['', '.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
-    devtool: "source-map"
+    devtool: "source-map",
 
     //若使用一下的配置,则需要在html中使用script标签引入externals配置中设置的资源,否则webpack打包以后会提示相关的依赖对象不存在
-    // externals: {
-    //     "react": "React",
-    //     "react-dom": "ReactDOM"
-    // },
+    externals: {
+        // require("react") 是引用自外部模块的(引入的外部模块需要是webpack打包后的资源文件,否则webpack无法使用require做加载)
+        //key对应require(key),value对应全局变量名称
+        // 对应全局变量 React
+        "react": "React",
+        "react-dom": "ReactDOM",
+        "redux":'Redux',
+        "react-redux":"ReactRedux",
+        "react-router":"ReactRouter",
+        "immutable":"Immutable",
+    },
 };

@@ -2,7 +2,8 @@ import {Navigator} from '../components';
 
 import {mapStateToPropsInterface,mapDispatchToPropsInterface} from './containerInterface';
 
-const {connect} =require('react-redux');
+import * as reactRedux from 'react-redux';
+const {connect} =reactRedux;
 
 const mapStateToProps:mapStateToPropsInterface=(state:any,ownProps:any)=>{
     return {

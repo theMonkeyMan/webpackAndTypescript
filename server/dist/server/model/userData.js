@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 //模拟数据
 var userDatas = [
     {
@@ -11,5 +12,4 @@ var userDatas = [
         name: 'Richard'
     }
 ];
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = userDatas;

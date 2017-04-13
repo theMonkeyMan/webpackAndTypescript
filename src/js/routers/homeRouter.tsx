@@ -4,7 +4,7 @@ import { TextComponent } from '../components';
 
 import { HomeDayliManagerContainer,NavigatorContainer } from '../containers';
 
-const { Router, Route, IndexRoute, Link, IndexLink, browserHistory } = require('react-router');
+import * as reactRouter from 'react-router';
 
 import { rootPath } from '../common';
 
@@ -16,6 +16,8 @@ interface homeRouterStateInterface{
     state?:any;
     rootPath:string;
 }
+
+let { Router, Route, IndexRoute, Link, IndexLink, browserHistory } =reactRouter;
 
 export default class HomeRouter extends React.Component<homeRouterPropsInterface, homeRouterStateInterface>{
 

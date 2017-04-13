@@ -2,15 +2,15 @@ import * as React from "react";
 
 import * as ReactDOM from "react-dom"
 
-import { createStore, applyMiddleware,combineReducers } from "redux";
+import * as redux from "redux";
+
+import * as reactRedux from 'react-redux';
 
 import { logger } from './js/middlewares';
 
 import { homeDayliManagerReducer } from './js/reducer';
 
 import { HomeRouterContainer } from "./js/containers";
-
-const {Provider} = require("react-redux");
 
 // require("../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss");
 
@@ -20,10 +20,14 @@ interface AppIsRequireProps {
     store?: any
 }
 
+let { createStore, applyMiddleware, combineReducers } = redux;
+
+let { Provider } = reactRedux;
+
 let applyCreateStore = applyMiddleware(logger)(createStore);
 
 //合并reducers
-let rootReducer=combineReducers({
+let rootReducer = combineReducers({
     homeDayliManagerReducer
 });
 
@@ -37,6 +41,7 @@ class App extends React.Component<AppIsRequireProps, {}>{
         </Provider>
     }
 }
+
 ReactDOM.render(
     <App store={store} />,
     document.getElementById("example")

@@ -35,6 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 var _this = this;
+Object.defineProperty(exports, "__esModule", { value: true });
 //处理http请求路由的中间件(get,post,put,delete)
 var koaRouter = require('koa-router');
 var model_1 = require("../model");
@@ -120,5 +121,4 @@ router
         }
     });
 }); });
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = router;

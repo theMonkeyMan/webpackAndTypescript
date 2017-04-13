@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var koa = require("koa");
 var path = require('path');
 //http request body 解析中间件,主要处理请求参数在request body中的request method,例如post请求

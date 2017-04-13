@@ -10,7 +10,7 @@ export default function homeDayliManagerReducer(state:any=initialState,action:an
         }
         //接收到后台接口请求数据
         case homeDayliManagerAction.FETCH_RECEIVE:{
-            return state.set("userInfoList",action.payload);
+            return state.set("userInfoList",action.payload); 
         }
         //没有匹配到对应的action.type
         default :{

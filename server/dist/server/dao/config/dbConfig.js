@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 var dbConfig = {
     mysql: {
         host: '127.0.0.1',
@@ -8,5 +9,4 @@ var dbConfig = {
         port: 3306
     }
 };
-Object.defineProperty(exports, "__esModule", { value: true });
 exports.default = dbConfig;

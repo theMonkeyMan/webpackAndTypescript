@@ -36,6 +36,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
+Object.defineProperty(exports, "__esModule", { value: true });
 //配合koa-static中间件做请求发送,目前在项目中使用其代替koa-static
 var koaSend = require('koa-send');
 var validOriginArray_1 = require("./validOriginArray");
