@@ -1,6 +1,7 @@
 node_modules
-dist/staitc/*
+dist/static
 dist/index.html
+server/dist
 yarn.lock
 .vscode
-npm-debug.log
+npm-debug.log 
