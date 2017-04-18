@@ -1,1 +1,1 @@
-export const rootPath=`/dist/index.html`;
+export const rootPath=`/`;

@@ -18,7 +18,7 @@
     "css-loader": "^0.25.0",
     "enhanced-resolve": "^2.3.0",
     "exports-loader": "^0.6.3",
-    "extract-text-webpack-plugin": "^1.0.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.9.0",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
@@ -45,7 +45,7 @@
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
-    "webpack": "^1.13.3"
+    "webpack": "^2.4.1"
   },
   "devDependencies": {
     "@types/node": "^6.0.49",
@@ -56,6 +56,7 @@
     "webpack-product": "webpack --progress --watch --colors",
     "webpack-dev": "webpack",
     "run-server": "nodemon -x babel-node ./server/dist/server/index.js",
-    "initDB": "mysql -u root -p -e 'source ./scripts/initDB.sql'"
+    "initDB": "mysql -u root -p -e 'source ./scripts/initDB.sql'",
+    "webpack-server":"webpack && yarn run-server"
   }
 }

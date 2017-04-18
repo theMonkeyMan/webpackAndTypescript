@@ -56,11 +56,13 @@ module.exports = {
                 //loader字段是指定具体的模块加载器去编译匹配到的文本流内容
                 //ExtractTextPlugin是一个文件内容提取插件,以下使用该插件提取相应的
                 //module loader信息,然后赋值给loader字段.
-                loader: ExtractTextPlugin.extract('style', ['css'])
+                // loader: ExtractTextPlugin.extract('style', ['css']),
+                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader'] })
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', ['css', 'sass'])
+                // loader: ExtractTextPlugin.extract('style', ['css', 'sass']),
+                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader'] })
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -162,7 +164,7 @@ module.exports = {
             angular: path.join(__dirname, "./src/vendor/angular")
         },
 
-        extensions: ['', '.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: ['.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
     devtool: "source-map",
@@ -170,13 +172,13 @@ module.exports = {
     //若使用一下的配置,则需要在html中使用script标签引入externals配置中设置的资源,否则webpack打包以后会提示相关的依赖对象不存在
     externals: {
         // require("react") 是引用自外部模块的(引入的外部模块需要是webpack打包后的资源文件,否则webpack无法使用require做加载)
-        //key对应require(key),value对应全局变量名称
+        // key对应require(key),value对应全局变量名称
         // 对应全局变量 React
-        // "react": "React",
-        // "react-dom": "ReactDOM",
-        // "redux":'Redux',
-        // "react-redux":"ReactRedux",
-        // "react-router":"ReactRouter",
-        // "immutable":"Immutable",
+        "react": "React",
+        "react-dom": "ReactDOM",
+        "redux":'Redux',
+        "react-redux":"ReactRedux",
+        "react-router":"ReactRouter",
+        "immutable":"Immutable",
     },
 };

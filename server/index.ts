@@ -1,5 +1,9 @@
 import * as koa from 'koa';
 
+var exec=require('child_process').exec;
+
+var os=require('os');
+
 var path = require('path');
 
 //http request body 解析中间件,主要处理请求参数在request body中的request method,例如post请求
@@ -33,5 +37,13 @@ koaServer
     .use(router.routes())
     //允许接收所有的请求方式,for example:get post put delete等.
     .use(router.allowedMethods())
-koaServer.listen(3000);
+koaServer.listen(3000).addListener('listening',function(){
+    var osPlatform=os.platform();
+    if(osPlatform.includes("win32")||osPlatform.includes("win64")){
+        exec(`start http://127.0.0.1:3000`);
+    }
+    else{
+        exec(`open http://127.0.0.1:3000`);
+    }
+})
 console.info('server is launch,and listen port 3000.');
