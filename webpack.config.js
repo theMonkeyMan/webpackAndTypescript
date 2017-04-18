@@ -12,6 +12,8 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 //清除文件插件
 var CleanWebpackPlugin = require('clean-webpack-plugin');
 
+var firstPlugin=require("./firstPlugin");
+
 //引入node环境
 var env=require("./webpack.prod").env;
 
@@ -32,7 +34,7 @@ module.exports = {
         index: './src/index.tsx',
         //配置common模块,优化页面加载,字段名可任意命名,可以使用resolve字段配置的模块别名,若resolve字段中没有配置相应的别名,
         //则会去搜索node_modules中的配置,如果两者都不存在指定的模块,则会提示找不到指定模块的错误
-        vendor: ["angular"]
+        vendor: ["angular","react","react-dom","redux","react-redux","react-router","immutable"]
     },
 
     //webpack输出文件配置
@@ -145,7 +147,8 @@ module.exports = {
             compressor: {
                 warnings: false
             }
-        })
+        }),
+        new firstPlugin({open:false})
     ],
 
     //该字段主要用于配置引用路径
@@ -169,11 +172,11 @@ module.exports = {
         // require("react") 是引用自外部模块的(引入的外部模块需要是webpack打包后的资源文件,否则webpack无法使用require做加载)
         //key对应require(key),value对应全局变量名称
         // 对应全局变量 React
-        "react": "React",
-        "react-dom": "ReactDOM",
-        "redux":'Redux',
-        "react-redux":"ReactRedux",
-        "react-router":"ReactRouter",
-        "immutable":"Immutable",
+        // "react": "React",
+        // "react-dom": "ReactDOM",
+        // "redux":'Redux',
+        // "react-redux":"ReactRedux",
+        // "react-router":"ReactRouter",
+        // "immutable":"Immutable",
     },
 };
