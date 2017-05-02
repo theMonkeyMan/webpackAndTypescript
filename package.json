@@ -28,6 +28,7 @@
     "koa": "2",
     "koa-body": "2",
     "koa-bodyparser": "next",
+    "koa-compress": "^2.0.0",
     "koa-router": "next",
     "koa-send": "^3.2.0",
     "koa-static": "next",
@@ -57,6 +58,6 @@
     "webpack-dev": "webpack",
     "run-server": "nodemon -x babel-node ./server/dist/server/index.js",
     "initDB": "mysql -u root -p -e 'source ./scripts/initDB.sql'",
-    "webpack-server":"webpack && yarn run-server"
+    "webpack-server": "webpack && yarn run-server"
   }
 }

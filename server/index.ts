@@ -1,5 +1,7 @@
 import * as koa from 'koa';
 
+import * as koaCompress from 'koa-compress';
+
 var exec=require('child_process').exec;
 
 var os=require('os');
@@ -37,6 +39,7 @@ koaServer
     .use(router.routes())
     //允许接收所有的请求方式,for example:get post put delete等.
     .use(router.allowedMethods())
+    .use(koaCompress())
 koaServer.listen(3000).addListener('listening',function(){
     var osPlatform=os.platform();
     if(osPlatform.includes("win32")||osPlatform.includes("win64")){
