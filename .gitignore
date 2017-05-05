@@ -3,5 +3,6 @@ dist/static
 dist/index.html
 server/dist
 yarn.lock
+yarn-error.log
 .vscode
-npm-debug.log 
+npm-debug.log

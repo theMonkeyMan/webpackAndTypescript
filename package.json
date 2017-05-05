@@ -29,8 +29,10 @@
     "koa-body": "2",
     "koa-bodyparser": "next",
     "koa-compress": "^2.0.0",
+    "koa-mysql-session": "git+ssh://git@github.com:theMonkeyMan/koa-mysql-session.git",
     "koa-router": "next",
     "koa-send": "^3.2.0",
+    "koa-session": "^5.0.0",
     "koa-static": "next",
     "mysql": "^2.13.0",
     "node-sass": "^3.13.0",
@@ -57,7 +59,7 @@
     "webpack-product": "webpack --progress --watch --colors",
     "webpack-dev": "webpack",
     "run-server": "nodemon -x babel-node ./server/dist/server/index.js",
-    "initDB": "mysql -u root -p -e 'source ./scripts/initDB.sql'",
+    "initDB": "mysql -u root -p myHome < ./scripts/initDB.sql",
     "webpack-server": "webpack && yarn run-server"
   }
 }
