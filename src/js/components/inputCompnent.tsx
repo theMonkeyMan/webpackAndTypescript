@@ -25,7 +25,7 @@ export default class InputComponent extends React.Component<{}, {}>{
         }
 
         this.setInputTextTrigger = setTimeout(() => {
-            this.setState({inputText:this.inputObj.value});
+            this.setState({inputText:e.value});
         }, 200);
     }
 
