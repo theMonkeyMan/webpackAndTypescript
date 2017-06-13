@@ -1,5 +1,7 @@
 import * as React from "react";
 
+const styles=require('../../css/styles.scss');
+
 interface TextPropsInterface {
     state?:any;
     text:string;
@@ -22,7 +24,7 @@ class TextComponent extends React.Component<TextPropsInterface, TextStateInterfa
     }
     
     render() {
-        return <h1 className="font_size_20 ">{this.props.text}</h1>;
+        return <h1 className={styles.font_size_20}>{this.props.text}</h1>;
     }
 }
 

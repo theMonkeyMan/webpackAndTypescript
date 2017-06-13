@@ -57,12 +57,12 @@ module.exports = {
                 //ExtractTextPlugin是一个文件内容提取插件,以下使用该插件提取相应的
                 //module loader信息,然后赋值给loader字段.
                 // loader: ExtractTextPlugin.extract('style', ['css']),
-                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader'] })
+                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules'] })
             },
             {
                 test: /\.scss$/,
                 // loader: ExtractTextPlugin.extract('style', ['css', 'sass']),
-                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader','sass-loader'] })
+                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules','sass-loader'] })
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,

@@ -4,7 +4,11 @@ const {Link, IndexLink } = require('react-router');
 
 import { rootPath } from '../common';
 
-import '../../css/navigator.scss';
+const navigator=require('../../css/navigator.scss');
+
+const styles=require('../../css/styles.scss');
+
+console.info(styles);
 
 interface NavigatorPropsInterface {
     state?: any;
@@ -70,16 +74,16 @@ export default class Navigator extends React.Component<NavigatorPropsInterface, 
                     <div key={`${item.name}` + index}>
                         <Link to={`${this.state.rootPath}${item.href}`}>
                             <li
-                                className={"position_relative float_left width_percent_33 text_align_center nav_li"}
+                                className={[styles.position_relative,styles.float_left,styles.width_percent_33,styles.text_align_center,navigator.nav_li].join(' ')}
                                 >
                                 {item.name}
-                                <ul className={"position_absolute sub_nav_ul width_percent_100"}>
+                                <ul className={[styles.position_absolute,styles.width_percent_100,navigator.sub_nav_ul].join(' ')}>
                                     {
                                         item.subMenu.map((subItem, subIndex) => {
                                             return (
                                                 <div key={`${subItem.name}` + subIndex}>
                                                     <Link to={`${this.state.rootPath}${subItem.href}`}>
-                                                        <li className={"width_percent_100 text_align_center sub_nav_li"}>{subItem.name}</li>
+                                                        <li className={[styles.width_percent_100,styles.text_align_center,navigator.sub_nav_li].join(' ')}>{subItem.name}</li>
                                                     </Link>
                                                 </div>
                                             )
@@ -100,9 +104,9 @@ export default class Navigator extends React.Component<NavigatorPropsInterface, 
 
     render() {
         return (
-            <div className={"bg_img"}>
-                <div className={'div_height'}>
-                    <ul className={'position_absolute nav_ul width_percent_100'}>
+            <div className={navigator.bg_img}>
+                <div className={navigator.div_height}>
+                    <ul className={[styles.position_absolute,styles.width_percent_100,navigator.nav_ul].join(' ')}>
                         {this.mapNavItem()}
 
                     </ul>

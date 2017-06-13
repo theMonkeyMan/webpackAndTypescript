@@ -12,10 +12,6 @@ import { homeDayliManagerReducer } from './js/reducer';
 
 import { HomeRouterContainer } from "./js/containers";
 
-// require("../node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss");
-
-require("./css/styles.scss");
-
 interface AppIsRequireProps {
     store?: any
 }
