@@ -150,7 +150,7 @@ module.exports = {
                 warnings: false
             }
         }),
-        new firstPlugin({open:false})
+        // new firstPlugin({open:false})
     ],
 
     //该字段主要用于配置引用路径

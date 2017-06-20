@@ -23,6 +23,8 @@
     "exports-loader": "^0.6.3",
     "extract-text-webpack-plugin": "^2.1.0",
     "file-loader": "^0.9.0",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.8",
     "html-loader": "^0.4.4",
     "html-webpack-plugin": "^2.24.1",
     "immutable": "^3.8.1",
@@ -72,7 +74,7 @@
     "initDB": "mysql -u root -p myHome < ./scripts/initDB.sql",
     "webpack-server": "webpack && yarn run-server",
     "test": "jest",
-    "createDoc":"typedoc --out ./doc/ ./src/index.tsx --module commonjs --jsx jsx --lib lib.es6.d.ts"
+    "createDoc": "typedoc --out ./doc/ ./src/index.tsx --module commonjs --jsx jsx --lib lib.es6.d.ts"
   },
   "jest": {
     "transform": {
