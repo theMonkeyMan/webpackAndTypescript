@@ -7,3 +7,5 @@ yarn-error.log
 .vscode
 npm-debug.log
 doc/
+gulpfile.js
+webpack.config.js

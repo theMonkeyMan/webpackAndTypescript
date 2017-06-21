@@ -1,15 +1,15 @@
-var gulp = require('gulp');
+import * as gulp from 'gulp';
 
-var gulpUtil = require('gulp-util');
+import * as gulpUtil from 'gulp-util';
 
-var webpack = require('webpack');
+import * as webpack from 'webpack';
 
-var webpackConfig = require('./webpack.config.js');
+let webpackConfig = require('./webpack.config.js');
 
 gulp.task('webpack', function (cb) {
     return webpack(webpackConfig, function (err, stats) {
         if (err) {
-            throw new gutil.PluginError('webpack', err)
+            throw new gulpUtil.PluginError('webpack', err)
         }
         gulpUtil.log('[webpack]', stats.toString({
             colors: true,

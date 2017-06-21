@@ -1,21 +1,21 @@
-var path = require('path');
+import * as path from 'path';
 
 //webpack自带的api
-var webpack = require('webpack');
+import * as webpack from 'webpack';
 
 //整合webpack-html的插件
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 //文件内容提取插件
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 //清除文件插件
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 
-var firstPlugin=require("./firstPlugin");
+let firstPlugin=require('./firstPlugin');
 
 //引入node环境
-var env=require("./webpack.prod").env;
+let env=require("./webpack.prod").env;
 
 //定义公共路径
 //Note:
@@ -26,7 +26,7 @@ var env=require("./webpack.prod").env;
 //  //define relative path
 //  var publicPath=`/dist/static/`;
 
-var publicPath = `/dist/static/`;
+let publicPath = `/dist/static/`;
 
 module.exports = {
     //webpack入口文件配置
@@ -34,7 +34,8 @@ module.exports = {
         index: './src/index.tsx',
         //配置common模块,优化页面加载,字段名可任意命名,可以使用resolve字段配置的模块别名,若resolve字段中没有配置相应的别名,
         //则会去搜索node_modules中的配置,如果两者都不存在指定的模块,则会提示找不到指定模块的错误
-        vendor: ["angular","react","react-dom","redux","react-redux","react-router","immutable"]
+        vendor: ["angular"],
+        others:["react","react-dom","redux","react-redux","react-router","immutable"]
     },
 
     //webpack输出文件配置
@@ -119,16 +120,16 @@ module.exports = {
         }),
         //使用公共模块插件将公共代码以及第三方代码和内部模块分割
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',//该值对应entry对象字面量中对应的key值
-            filename: 'common.js',//指定公共模块输出文件名称,若不配置该字段将以output字面量定义的规则为准
+            names: ['vendor','others'],//该值对应entry对象字面量中对应的key值
+            filename: '[name].[hash].js',//指定公共模块输出文件名称,若不配置该字段将以output字面量定义的规则为准
             Infinity: false,
             children: false //是否给所有的模块添加公共代码模块,若children=true,则会在每一个chunk文件中添加公共代码块,默认为false
-        }),
+        }as any),
 
         //webpack-html解决方案
         new HtmlWebpackPlugin({
             //引入index chunk
-            chunks: ['index', "vendor"],
+            chunks: ['index','vendor','others'],
             //指定引入chunk文件的html文件
             filename: '../index.html',
             //html文件的模板格式文件
@@ -139,7 +140,9 @@ module.exports = {
         //给css文件添加hash值,避免缓存
         new ExtractTextPlugin('[name].[chunkhash].css'),
 
-        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(false),
+        //webpack3.0提供的作用域提升
+        new webpack.optimize['ModuleConcatenationPlugin'](),
 
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(env)
@@ -149,7 +152,7 @@ module.exports = {
             compressor: {
                 warnings: false
             }
-        }),
+        }as any),
         // new firstPlugin({open:false})
     ],
 
