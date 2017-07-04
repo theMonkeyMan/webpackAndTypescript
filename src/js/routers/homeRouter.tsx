@@ -29,12 +29,12 @@ export default class HomeRouter extends React.Component<homeRouterPropsInterface
             <Router history={browserHistory}>
                 <Route path={'/'} component={NavigatorContainer}>
 
-                    <Route path={`about`} >
+                    <Route path={`/about`} >
                         {/*<Route path={`companyCulture`} component={homeDayliManagerContainer} />*/}
 
                     </Route>
 
-                    <Route path={`myHome`} >
+                    <Route path={`/myHome`} >
                         <Route path={`dayliManager`} component={HomeDayliManagerContainer} />
 
                     </Route>

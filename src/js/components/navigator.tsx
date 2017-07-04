@@ -6,8 +6,6 @@ const navigator=require('../../css/navigator.scss');
 
 const styles=require('../../css/styles.scss');
 
-console.info(styles);
-
 interface NavigatorPropsInterface {
     state?: any;
 }

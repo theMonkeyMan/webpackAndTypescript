@@ -151,7 +151,8 @@ module.exports = {
         new webpack.optimize.UglifyJsPlugin({
             compressor: {
                 warnings: false
-            }
+            },
+            sourceMap:true
         }as any),
         // new firstPlugin({open:false})
     ],
