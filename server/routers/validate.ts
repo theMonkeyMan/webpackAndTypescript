@@ -21,34 +21,41 @@ export async function filterRouter(ctx, next) {
     // ctx.response.redirect("/dist/index.html");
     // console.info(`${staticPath}/dist/${ctx.path}index.html`);
     console.info(ctx.path);
-    //让所有路由都能接收根目录index.html文件
-    await koaSend(ctx, `/index.html`, {
-        //设置资源文件根目录
-        root: `${staticPath}/dist/`,
-        // maxAge: 365 * 24 * 60 * 60
-    });
+    //以.切割请求路径
+    var extensionMath = ctx.path.split('.');
 
-    await koaSend(ctx, ctx.path, {
-        //设置资源文件根目录
-        root: `${staticPath}`,
-        // maxAge: 365 * 24 * 60 * 60
-    });
+    //扩展名集合
+    var extensionArray: any = ['js', 'css', 'jpg', 'png'];
+    
+    //获取请求的静态资源文件的扩展名
+    var extesion=extensionMath[extensionMath.length - 1];
 
-    //如果请求路径中存在node_modules,则将资源文件根目录指向项目根目录
-    // if (ctx.path.indexOf('node_modules') >= 0) {
-    //     await koaSend(ctx, ctx.path, {
-    //         //设置资源文件根目录
-    //         root: `${staticPath}`,
-    //         // maxAge: 365 * 24 * 60 * 60
-    //     });
-    // }
-    // else {
-    //     await koaSend(ctx, ctx.path, {
-    //         //设置资源文件根目录
-    //         root: `${staticPath}`,
-    //         // maxAge: 365 * 24 * 60 * 60
-    //     });
-    // }
+    //如果请求的资源文件扩展名不在扩展名集合中,则默认请求根目录html文件
+    if (!extensionArray.includes(extesion)) {
+        //让所有路由都能接收根目录index.html文件
+        await koaSend(ctx, `/index.html`, {
+            //设置资源文件根目录
+            root: `${staticPath}/dist/`,
+            // maxAge: 365 * 24 * 60 * 60
+        });
+    }
+
+    //如果请求路径中包含node_modules关键字,则将根目录指向node_modules目录
+    if (ctx.path.indexOf('node_modules') >= 0) {
+        await koaSend(ctx, ctx.path.split('node_modules/')[1], {
+            //设置资源文件根目录
+            root: `${staticPath}/node_modules`,
+            // maxAge: 365 * 24 * 60 * 60
+        });
+    }
+    //将静态资源的根目录指向项目根目录
+    else {
+        await koaSend(ctx, ctx.path, {
+            //设置资源文件根目录
+            root: `${staticPath}`,
+            // maxAge: 365 * 24 * 60 * 60
+        });
+    }
 
     await next();
 }
