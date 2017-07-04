@@ -6,15 +6,12 @@ import { HomeDayliManagerContainer,NavigatorContainer } from '../containers';
 
 import * as reactRouter from 'react-router';
 
-import { rootPath } from '../common';
-
 interface homeRouterPropsInterface{
     state?:any;
 }
 
 interface homeRouterStateInterface{
     state?:any;
-    rootPath:string;
 }
 
 let { Router, Route, IndexRoute, Link, IndexLink, browserHistory,hashHistory } =reactRouter;
@@ -24,22 +21,21 @@ export default class HomeRouter extends React.Component<homeRouterPropsInterface
     constructor(props) {
         super(props);
         this.state={
-            rootPath:rootPath,
         };
     }
 
     render() {
         return (
-            <Router history={hashHistory}>
+            <Router history={browserHistory}>
                 <Route path={'/'} component={NavigatorContainer}>
 
-                    <Route path={`/about`} >
+                    <Route path={`about`} >
                         {/*<Route path={`companyCulture`} component={homeDayliManagerContainer} />*/}
 
                     </Route>
 
-                    <Route path={`/myHome`} >
-                        <Route path={`/dayliManager`} component={HomeDayliManagerContainer} />
+                    <Route path={`myHome`} >
+                        <Route path={`dayliManager`} component={HomeDayliManagerContainer} />
 
                     </Route>
 

@@ -1,37 +1,55 @@
 //处理静态资源的中间件,html,css,js等
 // var koaStatic=require('koa-static');
 
+import * as path from 'path';
+
 //配合koa-static中间件做请求发送,目前在项目中使用其代替koa-static
 const koaSend = require('koa-send');
 
 import validOriginArray from './validOriginArray';
 
+var staticPath = path.join(__dirname, '../../../..');
+
 //路由权限过滤
 export async function filterRouter(ctx, next) {
     //请求路径中不包含api字符串(代表后台接口请求路径前缀)或dist字符串(代表静态资源请求路径前缀)时,返回请求被禁止
-    // if (ctx.path != '/' && !ctx.path.includes('api') && !ctx.path.includes('dist')) {
+    // if (ctx.path != '/' && !ctx.path.includes('api') && !ctx.path.includes('dist') && !ctx.path.includes('node_modules')) {
     //     return ctx.body = 'Forbidden';
     // }
-    console.info(ctx.path);
+
     // //给客户端发送资源
-    if (ctx.path == '/') {
-        // await koaSend(ctx, `/dist/index.html`,{
-        //     maxAge:365*24*60*60
-        // });
-        ctx.response.redirect("/dist/index.html");
-    }
-    
-    if (ctx.path.includes('index.html')) {
-        await koaSend(ctx, `/dist/index.html`, {
-            maxAge: 365 * 24 * 60 * 60
-        })
-    }
-    else {
-        await koaSend(ctx, ctx.path, {
-            maxAge: 365 * 24 * 60 * 60
-        });
-    }
+    // ctx.response.redirect("/dist/index.html");
+    // console.info(`${staticPath}/dist/${ctx.path}index.html`);
+    console.info(ctx.path);
+    //让所有路由都能接收根目录index.html文件
+    await koaSend(ctx, `/index.html`, {
+        //设置资源文件根目录
+        root: `${staticPath}/dist/`,
+        // maxAge: 365 * 24 * 60 * 60
+    });
+
+    await koaSend(ctx, ctx.path, {
+        //设置资源文件根目录
+        root: `${staticPath}`,
+        // maxAge: 365 * 24 * 60 * 60
+    });
+
+    //如果请求路径中存在node_modules,则将资源文件根目录指向项目根目录
+    // if (ctx.path.indexOf('node_modules') >= 0) {
+    //     await koaSend(ctx, ctx.path, {
+    //         //设置资源文件根目录
+    //         root: `${staticPath}`,
+    //         // maxAge: 365 * 24 * 60 * 60
+    //     });
     // }
+    // else {
+    //     await koaSend(ctx, ctx.path, {
+    //         //设置资源文件根目录
+    //         root: `${staticPath}`,
+    //         // maxAge: 365 * 24 * 60 * 60
+    //     });
+    // }
+
     await next();
 }
 

@@ -2,8 +2,6 @@ import * as React from 'react';
 
 const {Link, IndexLink } = require('react-router');
 
-import { rootPath } from '../common';
-
 const navigator=require('../../css/navigator.scss');
 
 const styles=require('../../css/styles.scss');
@@ -16,7 +14,6 @@ interface NavigatorPropsInterface {
 
 interface NavigatorStateInterface {
     state?: any;
-    rootPath: string;
 }
 
 export default class Navigator extends React.Component<NavigatorPropsInterface, NavigatorStateInterface>{
@@ -26,14 +23,10 @@ export default class Navigator extends React.Component<NavigatorPropsInterface, 
     constructor(props) {
         super(props);
 
-        this.state = {
-            rootPath: rootPath,
-        };
-
         this.NavItemArray = [
             {
                 name: "首页",
-                href: "",
+                href: "/",
                 subMenu: [],
             },
             {
@@ -72,7 +65,7 @@ export default class Navigator extends React.Component<NavigatorPropsInterface, 
             this.NavItemArray.map((item, index) => {
                 return (
                     <div key={`${item.name}` + index}>
-                        <Link to={`${this.state.rootPath}${item.href}`}>
+                        <Link to={`${item.href}`}>
                             <li
                                 className={[styles.position_relative,styles.float_left,styles.width_percent_33,styles.text_align_center,navigator.nav_li].join(' ')}
                                 >
@@ -82,7 +75,7 @@ export default class Navigator extends React.Component<NavigatorPropsInterface, 
                                         item.subMenu.map((subItem, subIndex) => {
                                             return (
                                                 <div key={`${subItem.name}` + subIndex}>
-                                                    <Link to={`${this.state.rootPath}${subItem.href}`}>
+                                                    <Link to={`${subItem.href}`}>
                                                         <li className={[styles.width_percent_100,styles.text_align_center,navigator.sub_nav_li].join(' ')}>{subItem.name}</li>
                                                     </Link>
                                                 </div>
