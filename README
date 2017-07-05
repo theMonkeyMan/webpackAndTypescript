@@ -25,3 +25,6 @@ server side:
 2.在跟目录执行 npm run run-server
 
 3.访问服务器3000端口
+
+需要的全局node_modules:
+typescript nodemon jest yarn typedoc forever gulp babel babel-cli

@@ -9,3 +9,4 @@ npm-debug.log
 doc/
 gulpfile.js
 webpack.config.js
+*.log
