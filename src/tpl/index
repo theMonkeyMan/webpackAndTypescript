@@ -12,7 +12,7 @@
 <script src="../node_modules/react-redux/dist/react-redux.min.js"></script>
 <script src="../node_modules/react-router/umd/ReactRouter.min.js"></script>
 <script src="../node_modules/immutable/dist/immutable.min.js"></script>
-<script src="../node_modules/styled-components/dist/styled-components.js"></script>
+<script src="../node_modules/styled-components/dist/styled-components.min.js"></script>
 
 
 <head>
