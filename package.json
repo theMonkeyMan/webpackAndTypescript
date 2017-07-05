@@ -55,6 +55,7 @@
     "sass-loader": "^4.0.2",
     "script-loader": "^0.7.0",
     "style-loader": "^0.13.1",
+    "styled-components": "^2.1.1",
     "url-loader": "^0.5.7",
     "webpack": "3.0.0"
   },
@@ -77,7 +78,7 @@
     "webpack-server": "webpack && yarn run-server",
     "test": "jest",
     "createDoc": "typedoc --out ./doc/ ./src/index.tsx --module commonjs --jsx jsx --lib lib.es6.d.ts",
-    "ts-build":"tsc gulpfile.ts webpack.config.ts --allowJs && gulp build"
+    "ts-build": "tsc gulpfile.ts webpack.config.ts --allowJs && gulp build"
   },
   "jest": {
     "transform": {

@@ -184,5 +184,6 @@ module.exports = {
         "react-redux":"ReactRedux",
         "react-router":"ReactRouter",
         "immutable":"Immutable",
+        "styled-components":"styled"
     },
 };
