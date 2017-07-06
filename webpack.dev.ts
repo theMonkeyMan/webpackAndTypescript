@@ -1,6 +1,6 @@
 import * as webpack from 'webpack';
 
-let webpackConfig = require('./webpack.config');
+import webpackConfig from './webpack.config';
 
 let includePlugins = [
     new webpack.DefinePlugin({
@@ -11,5 +11,8 @@ let includePlugins = [
 includePlugins.forEach((item,index)=>{
     webpackConfig.plugins.push(item);
 });
+
+//使用source-map
+webpackConfig.devtool="source-map";
 
 module.exports = webpackConfig;

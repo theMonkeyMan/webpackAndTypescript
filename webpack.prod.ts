@@ -1,6 +1,6 @@
 import * as webpack from 'webpack';
 
-let webpackConfig = require('./webpack.config');
+import webpackConfig from './webpack.config';
 
 let includePlugins = [
     //压缩webpack生成的文件,减少http流量压力

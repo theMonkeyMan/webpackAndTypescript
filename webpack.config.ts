@@ -25,7 +25,7 @@ let firstPlugin=require('./firstPlugin');
 
 let publicPath = `/dist/static/`;
 
-module.exports = {
+let webpackConfig= {
     //webpack入口文件配置
     entry: {
         index: './src/index.tsx',
@@ -168,7 +168,8 @@ module.exports = {
         extensions: ['.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
-    devtool: "source-map",
+    //默认空值,在development环境中使用source-map
+    devtool: "",
 
     //若使用一下的配置,则需要在html中使用script标签引入externals配置中设置的资源,否则webpack打包以后会提示相关的依赖对象不存在
     externals: {
@@ -184,3 +185,5 @@ module.exports = {
         "styled-components":"styled"
     },
 };
+
+export default webpackConfig;
