@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
         "outDir": "./dist/server",
-        "sourceMap": false,
+        "sourceMap": true,
         "noImplicitAny": false,
         "target": "es5",
         "allowJs":true,

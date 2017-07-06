@@ -4,9 +4,11 @@ dist/index.html
 server/dist
 yarn.lock
 yarn-error.log
-.vscode
 npm-debug.log
 doc/
 gulpfile.js
 webpack.config.js
+webpack.dev.js
+webpack.prod.js
 *.log
+out/

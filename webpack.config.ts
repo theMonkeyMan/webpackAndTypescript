@@ -14,9 +14,6 @@ import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 
 let firstPlugin=require('./firstPlugin');
 
-//引入node环境
-let env=require("./webpack.prod").env;
-
 //定义公共路径
 //Note:
 //  1.if you want to resolve assets file on the local(this way is by the File Protocol),for example:
@@ -144,16 +141,16 @@ module.exports = {
         //webpack3.0提供的作用域提升
         new webpack.optimize['ModuleConcatenationPlugin'](),
 
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(env)
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': JSON.stringify(env)
+        // }),
         //压缩webpack生成的文件,减少http流量压力
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            },
-            sourceMap:true
-        }as any),
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compressor: {
+        //         warnings: false
+        //     },
+        //     sourceMap:true
+        // }as any),
         // new firstPlugin({open:false})
     ],
 

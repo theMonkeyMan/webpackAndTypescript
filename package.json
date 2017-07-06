@@ -78,7 +78,8 @@
     "webpack-server": "webpack && yarn run-server",
     "test": "jest",
     "createDoc": "typedoc --out ./doc/ ./src/index.tsx --module commonjs --jsx jsx --lib lib.es6.d.ts",
-    "ts-build": "tsc gulpfile.ts webpack.config.ts --allowJs && gulp build",
+    "ts-dev": "tsc gulpfile.ts webpack.config.ts webpack.dev.ts --allowJs && gulp dev",
+    "ts-build": "tsc gulpfile.ts webpack.config.ts webpack.prod.ts --allowJs && gulp build",
     "forever-start":"forever start -l forever.log -o server.log -e error.log -a ./server/dist/server/index.js",
     "forever-stop":"forever stop ./server/dist/server/index.js"
   },

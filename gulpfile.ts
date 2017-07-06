@@ -4,9 +4,7 @@ import * as gulpUtil from 'gulp-util';
 
 import * as webpack from 'webpack';
 
-let webpackConfig = require('./webpack.config.js');
-
-gulp.task('webpack', function (cb) {
+function buildWebpack(webpackConfig,cb){
     return webpack(webpackConfig, function (err, stats) {
         if (err) {
             throw new gulpUtil.PluginError('webpack', err)
@@ -17,6 +15,18 @@ gulp.task('webpack', function (cb) {
         }));
         cb();
     });
+}
+
+gulp.task('webpack-prod', function (cb) {
+    let webpackConfig = require('./webpack.prod');
+    return buildWebpack(webpackConfig,cb);
 });
 
-gulp.task('build', ['webpack']);
+gulp.task('webpack-dev', function (cb) {
+    let webpackConfig = require('./webpack.dev');
+    return buildWebpack(webpackConfig,cb);
+});
+
+gulp.task('build', ['webpack-prod']);
+
+gulp.task('dev',['webpack-dev']);
