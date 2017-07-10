@@ -1,0 +1,48 @@
+{
+    // Use IntelliSense to learn about possible Node.js debug attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "nodejs Launch Program",
+            "program": "${workspaceRoot}/server/index.ts",
+            "cwd": "${workspaceRoot}",
+            "outFiles": ["${workspaceRoot}/server/**/*.js"],
+            "sourceMaps": true,
+            "stopOnEntry": true,
+            "console": "internalConsole",
+            "protocol":"inspector"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "nodejs Attach to Process",
+            "port": 5858,
+            "processId": "${command:PickProcess}",
+            "sourceMaps": true,
+            "stopOnEntry": true
+        },
+        {
+            "name": "chrome attach chrome",
+            "type": "chrome",
+            "request": "attach",
+            "port":9222,
+            "url": "http://localhost",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true
+            // "runtimeArgs": ["--nolazy"]
+        },
+        {
+            "name": "chrome launch chrome",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost",
+            "webRoot": "${workspaceRoot}",
+            "sourceMaps": true,
+            "runtimeArgs": ["--nolazy"]
+        }
+    ]
+}

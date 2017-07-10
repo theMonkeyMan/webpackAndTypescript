@@ -1,19 +1,18 @@
-var path = require('path');
+import * as path from 'path';
 
 //webpack自带的api
-var webpack = require('webpack');
+import * as webpack from 'webpack';
 
 //整合webpack-html的插件
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+import * as HtmlWebpackPlugin from 'html-webpack-plugin';
 
 //文件内容提取插件
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
+import * as ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 //清除文件插件
-var CleanWebpackPlugin = require('clean-webpack-plugin');
+import * as CleanWebpackPlugin from 'clean-webpack-plugin';
 
-//引入node环境
-var env=require("./webpack.prod").env;
+let firstPlugin=require('./firstPlugin');
 
 //定义公共路径
 //Note:
@@ -24,15 +23,16 @@ var env=require("./webpack.prod").env;
 //  //define relative path
 //  var publicPath=`/dist/static/`;
 
-var publicPath = `/dist/static/`;
+let publicPath = `/dist/static/`;
 
-module.exports = {
+let webpackConfig= {
     //webpack入口文件配置
     entry: {
         index: './src/index.tsx',
         //配置common模块,优化页面加载,字段名可任意命名,可以使用resolve字段配置的模块别名,若resolve字段中没有配置相应的别名,
         //则会去搜索node_modules中的配置,如果两者都不存在指定的模块,则会提示找不到指定模块的错误
-        vendor: ["angular"]
+        vendor: ["angular"],
+        others:["react","react-dom","redux","react-redux","react-router","immutable"]
     },
 
     //webpack输出文件配置
@@ -54,11 +54,13 @@ module.exports = {
                 //loader字段是指定具体的模块加载器去编译匹配到的文本流内容
                 //ExtractTextPlugin是一个文件内容提取插件,以下使用该插件提取相应的
                 //module loader信息,然后赋值给loader字段.
-                loader: ExtractTextPlugin.extract('style', ['css'])
+                // loader: ExtractTextPlugin.extract('style', ['css']),
+                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules'] })
             },
             {
                 test: /\.scss$/,
-                loader: ExtractTextPlugin.extract('style', ['css', 'sass'])
+                // loader: ExtractTextPlugin.extract('style', ['css', 'sass']),
+                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules','sass-loader'] })
             },
             {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -115,16 +117,16 @@ module.exports = {
         }),
         //使用公共模块插件将公共代码以及第三方代码和内部模块分割
         new webpack.optimize.CommonsChunkPlugin({
-            name: 'vendor',//该值对应entry对象字面量中对应的key值
-            filename: 'common.js',//指定公共模块输出文件名称,若不配置该字段将以output字面量定义的规则为准
+            names: ['vendor','others'],//该值对应entry对象字面量中对应的key值
+            filename: '[name].[hash].js',//指定公共模块输出文件名称,若不配置该字段将以output字面量定义的规则为准
             Infinity: false,
             children: false //是否给所有的模块添加公共代码模块,若children=true,则会在每一个chunk文件中添加公共代码块,默认为false
-        }),
+        }as any),
 
         //webpack-html解决方案
         new HtmlWebpackPlugin({
             //引入index chunk
-            chunks: ['index', "vendor"],
+            chunks: ['index','vendor','others'],
             //指定引入chunk文件的html文件
             filename: '../index.html',
             //html文件的模板格式文件
@@ -135,17 +137,21 @@ module.exports = {
         //给css文件添加hash值,避免缓存
         new ExtractTextPlugin('[name].[chunkhash].css'),
 
-        new webpack.optimize.OccurrenceOrderPlugin(),
+        new webpack.optimize.OccurrenceOrderPlugin(false),
+        //webpack3.0提供的作用域提升
+        new webpack.optimize['ModuleConcatenationPlugin'](),
 
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(env)
-        }),
+        // new webpack.DefinePlugin({
+        //     'process.env.NODE_ENV': JSON.stringify(env)
+        // }),
         //压缩webpack生成的文件,减少http流量压力
-        new webpack.optimize.UglifyJsPlugin({
-            compressor: {
-                warnings: false
-            }
-        })
+        // new webpack.optimize.UglifyJsPlugin({
+        //     compressor: {
+        //         warnings: false
+        //     },
+        //     sourceMap:true
+        // }as any),
+        // new firstPlugin({open:false})
     ],
 
     //该字段主要用于配置引用路径
@@ -159,15 +165,16 @@ module.exports = {
             angular: path.join(__dirname, "./src/vendor/angular")
         },
 
-        extensions: ['', '.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: ['.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
-    devtool: "source-map",
+    //默认空值,在development环境中使用source-map
+    devtool: "",
 
     //若使用一下的配置,则需要在html中使用script标签引入externals配置中设置的资源,否则webpack打包以后会提示相关的依赖对象不存在
     externals: {
         // require("react") 是引用自外部模块的(引入的外部模块需要是webpack打包后的资源文件,否则webpack无法使用require做加载)
-        //key对应require(key),value对应全局变量名称
+        // key对应require(key),value对应全局变量名称
         // 对应全局变量 React
         "react": "React",
         "react-dom": "ReactDOM",
@@ -175,5 +182,8 @@ module.exports = {
         "react-redux":"ReactRedux",
         "react-router":"ReactRouter",
         "immutable":"Immutable",
+        "styled-components":"styled"
     },
 };
+
+export default webpackConfig;

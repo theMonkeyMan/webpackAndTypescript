@@ -1,6 +1,7 @@
 import * as React from "react";
 
-import '../../css/button.scss';
+
+const styles=require('../../css/button.scss');
 
 interface buttonPropInterface {
     handler: Function;
@@ -19,7 +20,7 @@ class ButtonComponent extends React.Component<buttonPropInterface, {}>{
     }
 
     render() {
-        return (<button className={'btn'} onClick={this.btnHandler}>{this.props.btnName}</button>)
+        return (<button className={styles.btn} onClick={this.btnHandler}>{this.props.btnName}</button>)
     }
 }
 

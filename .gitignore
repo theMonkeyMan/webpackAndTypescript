@@ -1,7 +1,13 @@
 node_modules
-dist/static
-dist/index.html
+dist/
 server/dist
 yarn.lock
-.vscode
-npm-debug.log 
+yarn-error.log
+npm-debug.log
+doc/
+gulpfile.js
+webpack.config.js
+webpack.dev.js
+webpack.prod.js
+*.log
+out/

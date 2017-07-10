@@ -10,7 +10,7 @@ const {connect} = require('react-redux');
 
 import { requestList } from '../requests';
 
-import '../../css/homeDayliManager.scss';
+const styles=require('../../css/homeDayliManager.scss');
 
 const mapStateToProps: mapStateToPropsInterface = (state: any, ownProps: any) => {
     return {
@@ -98,20 +98,20 @@ class HomeDayliManager extends React.Component<HomeDayliManagerPropsInterface, H
 
     render() {
         return (
-            <div className={'content'}>
-                <li className={'margin_top_12'}>
-                    <span className={'float_left'}>姓名:</span>
+            <div className={styles.content}>
+                <li className={styles.margin_top_12}>
+                    <span className={styles.float_left}>姓名:</span>
                     <InputComponent ref={obj => { this.input_name = obj; } } />
                 </li>
-                <li className={'margin_top_12'}>
-                    <span className={'float_left'}>年龄:</span>
+                <li className={styles.margin_top_12}>
+                    <span className={styles.float_left}>年龄:</span>
                     <InputComponent ref={obj => { this.input_age = obj; } } />
                 </li>
-                <li className={'margin_top_12'}>
-                    <span className={'float_left'}>性别:</span>
+                <li className={styles.margin_top_12}>
+                    <span className={styles.float_left}>性别:</span>
                     <InputComponent ref={obj => { this.input_sex = obj; } } />
                 </li>
-                <li className={'text_align_center margin_top_12'}>
+                <li className={[styles.text_align_center,styles.margin_top_12].join(' ')}>
                     <span><ButtonComponent btnName="按钮" handler={this.submitBtnClick} /></span>
                 </li>
 

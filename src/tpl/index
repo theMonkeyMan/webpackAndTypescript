@@ -5,12 +5,15 @@
 <meta http-equiv="cache-control" content="no-cache, must-revalidate">
 <meta http-equiv="expires" content="0">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="/dist/lib/react.min.js"></script>
-<script src="/dist/lib/react-dom.min.js"></script>
-<script src="/dist/lib/redux.min.js"></script>
-<script src="/dist/lib/react-redux.min.js"></script>
-<script src="/dist/lib/ReactRouter.min.js"></script>
-<script src="/dist/lib/immutable.min.js"></script>
+
+<script src="../node_modules/react/dist/react.min.js"></script>
+<script src="../node_modules/react-dom/dist/react-dom.min.js"></script>
+<script src="../node_modules/redux/dist/redux.min.js"></script>
+<script src="../node_modules/react-redux/dist/react-redux.min.js"></script>
+<script src="../node_modules/react-router/umd/ReactRouter.min.js"></script>
+<script src="../node_modules/immutable/dist/immutable.min.js"></script>
+<script src="../node_modules/styled-components/dist/styled-components.min.js"></script>
+
 
 <head>
     <title>Document</title>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import '../../css/input.scss';
+const styles=require('../../css/input.scss');
 
 export default class InputComponent extends React.Component<{}, {}>{
 
@@ -25,14 +25,14 @@ export default class InputComponent extends React.Component<{}, {}>{
         }
 
         this.setInputTextTrigger = setTimeout(() => {
-            this.setState({inputText:this.inputObj.value});
+            this.setState({inputText:e.value});
         }, 200);
     }
 
     render() {
         return (
             <div>
-                <input className={'input'} ref={obj => { this.inputObj = obj; } } onChange={this.inputOnchange} />
+                <input className={styles.input} ref={obj => { this.inputObj = obj; } } onChange={this.inputOnchange} />
             </div>
         );
     }
