@@ -1,6 +1,5 @@
 node_modules
-dist/static
-dist/index.html
+dist/
 server/dist
 yarn.lock
 yarn-error.log

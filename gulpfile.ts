@@ -27,6 +27,10 @@ gulp.task('webpack-dev', function (cb) {
     return buildWebpack(webpackConfig,cb);
 });
 
+gulp.task('watch',function(cb){
+    gulp.watch('./src/**/*.*',['webpack-dev']);
+})
+
 gulp.task('build', ['webpack-prod']);
 
-gulp.task('dev',['webpack-dev']);
+gulp.task('dev',['webpack-dev','watch']);
