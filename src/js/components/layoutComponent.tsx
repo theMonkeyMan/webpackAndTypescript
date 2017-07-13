@@ -15,7 +15,7 @@ class LayoutComponent extends React.Component<{}, {}>{
 
     render() {
         return (
-            <Layout style={{height:"100%"}}>
+            <Layout style={{ height: "100%" }}>
                 <Header className="header">
                     <div className="logo" />
                     <Menu
@@ -29,7 +29,7 @@ class LayoutComponent extends React.Component<{}, {}>{
                         <Menu.Item key="3">nav 3</Menu.Item>
                     </Menu>
                 </Header>
-                <Layout>
+                <Layout style={{height:'100%'}}>
                     <Sider width={200} style={{ background: '#fff' }}>
                         <Menu
                             mode="inline"
@@ -57,7 +57,7 @@ class LayoutComponent extends React.Component<{}, {}>{
                             </SubMenu>
                         </Menu>
                     </Sider>
-                    <Layout style={{ padding: '0 24px 24px' }}>
+                    <Layout style={{ padding: '0 24px 24px',height:'100%' }}>
                         <Breadcrumb style={{ margin: '12px 0' }}>
                             <Breadcrumb.Item>Home</Breadcrumb.Item>
                             <Breadcrumb.Item>List</Breadcrumb.Item>
@@ -65,7 +65,7 @@ class LayoutComponent extends React.Component<{}, {}>{
                         </Breadcrumb>
                         <Content style={{ background: '#fff', padding: 24, margin: 0 }}>
                             {this.props.children}
-        </Content>
+                        </Content>
                     </Layout>
                 </Layout>
             </Layout>

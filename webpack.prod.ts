@@ -32,4 +32,19 @@ includePlugins.forEach((item, index) => {
     webpackConfig.plugins.push(item);
 });
 
+webpackConfig.externals = {
+    // require("react") 是引用自外部模块的(引入的外部模块需要是webpack打包后的资源文件,否则webpack无法使用require做加载)
+    // key对应require(key),value对应全局变量名称
+    // 对应全局变量 React
+    "react": "React",
+    "react-dom": "ReactDOM",
+    "redux": 'Redux',
+    "react-redux": "ReactRedux",
+    "react-router": "ReactRouter",
+    "immutable": "Immutable",
+    "styled-components": "styled",
+    "antd": "antd",
+    "socket.io-client":"io",
+}
+
 module.exports = webpackConfig;
