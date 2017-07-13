@@ -1,4 +1,4 @@
-import {Navigator} from '../components';
+import {Navigator,LayoutComponent} from '../components';
 
 import {mapStateToPropsInterface,mapDispatchToPropsInterface} from './containerInterface';
 
@@ -17,6 +17,6 @@ const mapDispatchToProps:mapDispatchToPropsInterface=(dispatch:any,ownProps:any)
     }
 }
 
-const NavigatorContainer=connect(mapStateToProps,mapDispatchToProps)(Navigator);
+const NavigatorContainer=connect(mapStateToProps,mapDispatchToProps)(LayoutComponent);
 
 export default NavigatorContainer;

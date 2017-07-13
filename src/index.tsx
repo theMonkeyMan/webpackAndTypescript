@@ -12,6 +12,8 @@ import { homeDayliManagerReducer } from './js/reducer';
 
 import { HomeRouterContainer } from "./js/containers";
 
+const styles=require('./css/styles.scss');
+
 interface AppIsRequireProps {
     store?: any
 }
@@ -38,7 +40,11 @@ class App extends React.Component<AppIsRequireProps, {}>{
     }
 }
 
+let app:HTMLElement=document.getElementById("app");
+
+app.classList.add(styles.app);
+
 ReactDOM.render(
     <App store={store} />,
-    document.getElementById("example")
+    app
 );

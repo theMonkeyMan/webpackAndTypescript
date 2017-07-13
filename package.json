@@ -11,6 +11,7 @@
     "@types/react": "^0.14.50",
     "@types/react-dom": "^0.14.19",
     "@types/webpack": "^2.2.16",
+    "antd": "^2.12.0",
     "awesome-typescript-loader": "^3.0.0-beta.3",
     "babel-core": "^6.18.2",
     "babel-loader": "^6.2.8",
@@ -54,6 +55,7 @@
     "redux-saga": "^0.14.6",
     "sass-loader": "^4.0.2",
     "script-loader": "^0.7.0",
+    "socket.io": "^2.0.3",
     "style-loader": "^0.13.1",
     "styled-components": "^2.1.1",
     "url-loader": "^0.5.7",
@@ -80,8 +82,8 @@
     "createDoc": "typedoc --out ./doc/ ./src/index.tsx --module commonjs --jsx jsx --lib lib.es6.d.ts",
     "ts-dev": "tsc gulpfile.ts webpack.config.ts webpack.dev.ts --allowJs && gulp dev",
     "ts-build": "tsc gulpfile.ts webpack.config.ts webpack.prod.ts --allowJs && gulp build",
-    "forever-start":"forever start -l forever.log -o server.log -e error.log -a ./server/dist/server/index.js",
-    "forever-stop":"forever stop ./server/dist/server/index.js"
+    "forever-start": "forever start -l forever.log -o server.log -e error.log -a ./server/dist/server/index.js",
+    "forever-stop": "forever stop ./server/dist/server/index.js"
   },
   "jest": {
     "transform": {

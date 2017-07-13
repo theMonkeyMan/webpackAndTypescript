@@ -6,6 +6,8 @@ import Navigator from './navigator';
 
 import InputComponent from './inputCompnent';
 
+import LayoutComponent from './layoutComponent';
+
 
 /*
  * Component没有直接访问redux的store的权限,需要依赖Container.
@@ -16,4 +18,5 @@ export {
     TextComponent,
     Navigator,
     InputComponent,
+    LayoutComponent,
 }

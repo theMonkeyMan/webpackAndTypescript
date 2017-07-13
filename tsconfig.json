@@ -5,19 +5,21 @@
         "noImplicitAny": false,
         "module": "commonjs",
         "target": "es5",
-        "jsx": "react",
         "experimentalDecorators": true,
         // types option has been previously configured
-         "types": [
+        "types": [
             // add node as an option
             "node"
-         ]
+        ],
+        "moduleResolution": "node",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true
     },
     "files": [
         "./typings/index.d.ts",
         "./src/index.tsx"
     ],
-    "exclude":[
+    "exclude": [
         "./node_modules"
     ]
 }

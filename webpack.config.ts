@@ -124,15 +124,15 @@ let webpackConfig= {
         }as any),
 
         //webpack-html解决方案
-        new HtmlWebpackPlugin({
-            //引入index chunk
-            chunks: ['index','vendor','others'],
-            //指定引入chunk文件的html文件
-            filename: '../index.html',
-            //html文件的模板格式文件
-            template: './src/tpl/index',
-            inject: true
-        }),
+        // new HtmlWebpackPlugin({
+        //     //引入index chunk
+        //     chunks: ['index','vendor','others'],
+        //     //指定引入chunk文件的html文件
+        //     filename: '../index.html',
+        //     //html文件的模板格式文件
+        //     template: './src/tpl/index',
+        //     inject: true
+        // }),
 
         //给css文件添加hash值,避免缓存
         new ExtractTextPlugin('[name].[chunkhash].css'),
@@ -171,18 +171,19 @@ let webpackConfig= {
     //默认空值,在development环境中使用source-map
     devtool: "",
 
-    //若使用一下的配置,则需要在html中使用script标签引入externals配置中设置的资源,否则webpack打包以后会提示相关的依赖对象不存在
+    // //若使用一下的配置,则需要在html中使用script标签引入externals配置中设置的资源,否则webpack打包以后会提示相关的依赖对象不存在
     externals: {
         // require("react") 是引用自外部模块的(引入的外部模块需要是webpack打包后的资源文件,否则webpack无法使用require做加载)
         // key对应require(key),value对应全局变量名称
         // 对应全局变量 React
-        "react": "React",
-        "react-dom": "ReactDOM",
-        "redux":'Redux',
-        "react-redux":"ReactRedux",
-        "react-router":"ReactRouter",
-        "immutable":"Immutable",
-        "styled-components":"styled"
+        // "react": "React",
+        // "react-dom": "ReactDOM",
+        // "redux":'Redux',
+        // "react-redux":"ReactRedux",
+        // "react-router":"ReactRouter",
+        // "immutable":"Immutable",
+        // "styled-components":"styled",
+        // "antd":"antd"
     },
 };
 
