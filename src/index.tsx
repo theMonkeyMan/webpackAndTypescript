@@ -1,8 +1,11 @@
 import * as React from "react";
 
-import * as ReactDOM from "react-dom"
+import * as ReactDOM from "react-dom";
 
 import * as redux from "redux";
+
+//只允许开发环境使用redux调试工具,正式环境无法使用
+import { composeWithDevTools } from 'redux-devtools-extension/developmentOnly';
 
 import * as reactRedux from 'react-redux';
 
@@ -18,7 +21,7 @@ interface AppIsRequireProps {
     store?: any
 }
 
-let { createStore, applyMiddleware, combineReducers } = redux;
+let { createStore, applyMiddleware, combineReducers,compose } = redux;
 
 let { Provider } = reactRedux;
 
@@ -30,7 +33,7 @@ let rootReducer = combineReducers({
 });
 
 //使用combineReducers合并后,每个reducer会对应一个独立的store数据
-let store = applyCreateStore(rootReducer);
+let store = applyCreateStore(rootReducer,composeWithDevTools());
 
 class App extends React.Component<AppIsRequireProps, {}>{
     render(): any {

@@ -1,11 +1,19 @@
+import * as path from 'path';
+
+import * as  fs from 'fs';
 //处理http请求路由的中间件(get,post,put,delete)
 const koaRouter = require('koa-router');
 
-import {originChecker} from './validate';
+import { originChecker } from './validate';
 
-import {userDatas} from '../model';
+import { userDatas } from '../model';
 
 import userDao from '../dao';
+
+
+const staticPath = path.join(__dirname, '../../../..');
+
+const mockApi = require(`${staticPath}/mockApi`);
 
 
 //创建koa-router实例
@@ -36,6 +44,18 @@ const router = koaRouter({
  * req.body.xxxxx 从post中的变量
  */
 
+let mockApiKeys = Object.keys(mockApi);
+
+if (process.env.NODE_ENV === 'development') {
+    mockApiKeys.forEach((item, index) => {
+        let [method, path] = item.split(' ');
+        router[method](path, async (ctx, next) => {
+            ctx.body = mockApi[mockApiKeys[index]];
+        })
+    })
+}
+
+
 router
     .get('/', async (ctx, next) => {
         ctx.body = "home page";
@@ -46,29 +66,29 @@ router
     })
 
     .post('/second', async (ctx, next) => {
-        var {index} = ctx.request.body;
+        var { index } = ctx.request.body;
         ctx.body = `${JSON.stringify(userDatas[index])}`;
     })
 
-    .get('/getUserInfo',async(ctx,next)=>{
-        var userInfoPromise=userDao.queryAll();
+    .get('/getUserInfo', async (ctx, next) => {
+        var userInfoPromise = userDao.queryAll();
 
-        await userInfoPromise.then(res=>{
-            ctx.body={data:res,msg:"success"};
+        await userInfoPromise.then(res => {
+            ctx.body = { data: res, msg: "success" };
         })
-        .catch(error=>{
-            ctx.body={msg:error}
-        });
+            .catch(error => {
+                ctx.body = { msg: error }
+            });
     })
 
-    .post('/addUserInfo',async(ctx,next)=>{
-        var userInfoPromise=userDao.add(ctx.request);
-        await userInfoPromise.then(res=>{
-            ctx.body={msg:"添加成功"};
+    .post('/addUserInfo', async (ctx, next) => {
+        var userInfoPromise = userDao.add(ctx.request);
+        await userInfoPromise.then(res => {
+            ctx.body = { msg: "添加成功" };
         })
-        .catch(error=>{
-            ctx.body={msg:error};
-        });
+            .catch(error => {
+                ctx.body = { msg: error };
+            });
     })
 
 export default router;

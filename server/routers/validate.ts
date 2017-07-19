@@ -20,7 +20,7 @@ export async function filterRouter(ctx, next) {
     // //给客户端发送资源
     // ctx.response.redirect("/dist/index.html");
     // console.info(`${staticPath}/dist/${ctx.path}index.html`);
-    console.info(ctx.path);
+    // console.info(ctx.path);
     //以.切割请求路径
     var extensionMath = ctx.path.split('.');
 

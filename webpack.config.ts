@@ -63,6 +63,15 @@ let webpackConfig= {
                 loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules','sass-loader'] })
             },
             {
+                //test字段根据require到的文件扩展名做匹配
+                test: /\.less$/,
+                //loader字段是指定具体的模块加载器去编译匹配到的文本流内容
+                //ExtractTextPlugin是一个文件内容提取插件,以下使用该插件提取相应的
+                //module loader信息,然后赋值给loader字段.
+                // loader: ExtractTextPlugin.extract('style', ['css']),
+                loader:ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader?modules','less-loader'] })
+            },
+            {
                 test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: "url-loader?limit=10000&mimetype=application/font-woff"
             },
@@ -165,7 +174,7 @@ let webpackConfig= {
             angular: path.join(__dirname, "./src/vendor/angular")
         },
 
-        extensions: ['.scss', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
+        extensions: ['.scss','.less', '.ts', '.tsx', '.json', ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
 
     //默认空值,在development环境中使用source-map

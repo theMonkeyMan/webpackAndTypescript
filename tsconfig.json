@@ -13,7 +13,8 @@
         ],
         "moduleResolution": "node",
         "jsx": "react",
-        "allowSyntheticDefaultImports": true
+        "allowSyntheticDefaultImports": true,
+        "allowJs":true
     },
     "files": [
         "./typings/index.d.ts",

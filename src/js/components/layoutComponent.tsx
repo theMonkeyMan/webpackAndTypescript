@@ -2,13 +2,15 @@ import * as React from 'react';
 
 import { Link } from 'react-router';
 
-import { Layout, Menu, Breadcrumb, Icon } from 'antd';
+import { Layout, Menu, Breadcrumb, Icon, Progress } from 'antd';
 
 const { SubMenu } = Menu;
 
 const { Header, Content, Sider } = Layout;
 
-class LayoutComponent extends React.Component<{}, {}>{
+class LayoutComponent extends React.Component<{
+    [random: string]: any
+}, { [random: string]: any }>{
     constructor(props) {
         super(props);
     }
@@ -29,7 +31,7 @@ class LayoutComponent extends React.Component<{}, {}>{
                         <Menu.Item key="3">nav 3</Menu.Item>
                     </Menu>
                 </Header>
-                <Layout style={{height:'100%'}}>
+                <Layout style={{ height: '100%' }}>
                     <Sider width={200} style={{ background: '#fff' }}>
                         <Menu
                             mode="inline"
@@ -57,14 +59,14 @@ class LayoutComponent extends React.Component<{}, {}>{
                             </SubMenu>
                         </Menu>
                     </Sider>
-                    <Layout style={{ padding: '0 24px 24px',height:'100%' }}>
+                    <Layout style={{ padding: '0 24px 24px', height: '100%' }}>
                         <Breadcrumb style={{ margin: '12px 0' }}>
                             <Breadcrumb.Item>Home</Breadcrumb.Item>
                             <Breadcrumb.Item>List</Breadcrumb.Item>
                             <Breadcrumb.Item>App</Breadcrumb.Item>
                         </Breadcrumb>
                         <Content style={{ background: '#fff', padding: 24, margin: 0 }}>
-                            {this.props.children}
+                             {this.props.children}
                         </Content>
                     </Layout>
                 </Layout>

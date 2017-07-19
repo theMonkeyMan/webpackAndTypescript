@@ -2,17 +2,21 @@ import * as koa from 'koa';
 
 import * as http from 'http';
 
+import * as path from 'path';
+
+import * as fs from 'fs';
+
 import * as koaCompress from 'koa-compress';
 
 import * as session from 'koa-session';
 
 import * as mysqlStore from 'koa-mysql-session';
 
+import createLogger from 'concurrency-logger';
+
 var exec = require('child_process').exec;
 
 var os = require('os');
-
-var path = require('path');
 
 //http request body 解析中间件,主要处理请求参数在request body中的request method,例如post请求
 var bodyParser = require('koa-bodyparser');
@@ -28,8 +32,8 @@ var io = require('socket.io')(server);
 
 io.on('connection', function (socket) {
     console.info('user connected.');
-    socket.emit('sendData',"what your name?");
-    socket.on('clientData',function(data){
+    socket.emit('sendData', "what your name?");
+    socket.on('clientData', function (data) {
         console.info(data);
     });
 });
@@ -47,6 +51,25 @@ var mysqlConfig = {
 var store = new mysqlStore(mysqlConfig);
 
 koaServer.keys = ['myHome'];
+
+const staticPath = path.join(__dirname, '../../..');
+
+let logConfig = {};
+
+if (process.env.NODE_ENV === 'development') {
+    logConfig = {timestamp: true};
+}
+
+else {
+    const log = fs.createWriteStream(`${staticPath}/requests.log`);
+    logConfig = {
+        timestamp: true,
+        reporter: log
+    };
+}
+
+
+const logger = createLogger(logConfig);
 
 koaServer
     //校验合法域名
@@ -79,7 +102,9 @@ koaServer
         }
         // logger(ctx['session'].view++);
         // ctx['session'].age=24;
+        await next();
     })
+    .use(logger)
 server.listen(3000).addListener('listening', function () {
     // var osPlatform=os.platform();
     // if(osPlatform.includes("win32")||osPlatform.includes("win64")){
@@ -91,6 +116,6 @@ server.listen(3000).addListener('listening', function () {
 })
 console.info('server is launch,and listen port 3000.');
 
-function logger(data) {
-    console.info(`path: ${__filename}:\n`, data);
-}
+// function logger(data) {
+//     console.info(`path: ${__filename}:\n`, data);
+// }

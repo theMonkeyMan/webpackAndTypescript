@@ -27,4 +27,4 @@ server side:
 3.访问服务器3000端口
 
 需要的全局node_modules:
-typescript nodemon jest yarn typedoc forever gulp babel babel-cli
+typescript nodemon jest yarn typedoc forever gulp babel babel-cli typed-css-modules
